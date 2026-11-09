@@ -1,0 +1,547 @@
+# Outlets: names, card looks, and logo links. Edit freely; restart the app after changes.
+#
+# Each outlet is keyed by the name shown on the card, and has:
+#   domains:     sites that map to this name (subdomains match automatically)
+#   background:  card background color      text: headline color      accent: header band / stripe color
+#   font:        serif or sans              (headline typeface)
+#   header:      band (colored header bar) or stripe (left stripe)
+#   weight:      regular, bold, or black    (black thickens the bold font slightly; there is no true Black)
+#   name_color:  optional. Outlet-name color at the top. Defaults to the accent color.
+#                Only applies to the stripe header; on a band the name is white or black, whichever reads better.
+#   logo:        optional. Link to a PNG, JPG, or WebP logo (not SVG). Downloaded once, then cached.
+#                A file in the logos folder takes priority over this link.
+# Colors must be in quotes ("#ffffff"), since # starts a comment in YAML.
+# Colors are from memory and approximate. Unlisted outlets use the default look below.
+
+default:
+  background: "#fafaf8"
+  text: "#141820"
+  accent: "#d62828"
+  font: serif
+  header: stripe
+  weight: bold
+
+outlets:
+  The New York Times:
+    domains: [nytimes.com]
+    background: "#ffffff"
+    text: "#121212"
+    accent: "#121212"
+    font: serif
+    header: stripe
+    weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/The_New_York_Times_logo.png/960px-The_New_York_Times_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail
+
+  The Washington Post:
+    domains: [washingtonpost.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#111111"
+    font: serif
+    header: stripe
+    weight: bold
+
+  The Wall Street Journal:
+    domains: [wsj.com]
+    background: "#fcfbf7"
+    text: "#1a1a1a"
+    accent: "#bf242a"
+    font: serif
+    header: stripe
+    weight: bold
+    name_color: "#1a1a1a"
+
+  AP News:
+    domains: [apnews.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#ff322e"
+    font: sans
+    header: stripe
+    weight: bold
+
+  Reuters:
+    domains: [reuters.com]
+    background: "#ffffff"
+    text: "#262626"
+    accent: "#fa6400"
+    font: sans
+    header: stripe
+    weight: bold
+    name_color: "#262626"
+
+  BBC News:
+    domains: [bbc.com, bbc.co.uk]
+    background: "#ffffff"
+    text: "#141414"
+    accent: "#bb1919"
+    font: sans
+    header: band
+    weight: bold
+
+  CNN:
+    domains: [cnn.com]
+    background: "#ffffff"
+    text: "#0c0c0c"
+    accent: "#cc0000"
+    font: sans
+    header: band
+    weight: bold
+
+  NPR:
+    domains: [npr.org]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#d62021"
+    font: sans
+    header: stripe
+    weight: bold
+
+  PBS News:
+    domains: [pbs.org]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#2638c4"
+    font: sans
+    header: stripe
+    weight: bold
+
+  The Guardian:
+    domains: [theguardian.com]
+    background: "#ffffff"
+    text: "#121212"
+    accent: "#052962"
+    font: serif
+    header: band
+    weight: bold
+
+  Bloomberg:
+    domains: [bloomberg.com]
+    background: "#ffffff"
+    text: "#000000"
+    accent: "#1c1c1c"
+    font: sans
+    header: band
+    weight: bold
+
+  Fox News:
+    domains: [foxnews.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#003366"
+    font: sans
+    header: band
+    weight: bold
+
+  USA Today:
+    domains: [usatoday.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#009bfe"
+    font: sans
+    header: band
+    weight: bold
+
+  Politico:
+    domains: [politico.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#d11a2a"
+    font: sans
+    header: stripe
+    weight: bold
+
+  TIME:
+    domains: [time.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#e90606"
+    font: sans
+    header: band
+    weight: bold
+
+  Al Jazeera:
+    domains: [aljazeera.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#fa9000"
+    font: sans
+    header: stripe
+    weight: bold
+
+  Financial Times:
+    domains: [ft.com]
+    background: "#fff1e5"
+    text: "#262a33"
+    accent: "#990f3d"
+    font: serif
+    header: stripe
+    weight: bold
+    name_color: "#262a33"
+
+  NBC News:
+    domains: [nbcnews.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#1e5bb8"
+    font: sans
+    header: stripe
+    weight: bold
+
+  CBS News:
+    domains: [cbsnews.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#000000"
+    font: sans
+    header: band
+    weight: bold
+
+  ABC News:
+    domains: [abcnews.go.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#1a1a1a"
+    font: sans
+    header: stripe
+    weight: bold
+
+  MS NOW:
+    domains: [msnbc.com, ms.now]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#1e3a8a"
+    font: sans
+    header: band
+    weight: bold
+
+  CNBC:
+    domains: [cnbc.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#005594"
+    font: sans
+    header: band
+    weight: bold
+
+  Los Angeles Times:
+    domains: [latimes.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#111111"
+    font: serif
+    header: stripe
+    weight: bold
+
+  New York Post:
+    domains: [nypost.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#dc0000"
+    font: sans
+    header: band
+    weight: bold
+
+  The Economist:
+    domains: [economist.com]
+    background: "#ffffff"
+    text: "#0d0d0d"
+    accent: "#e3120b"
+    font: serif
+    header: stripe
+    weight: bold
+
+  The Atlantic:
+    domains: [theatlantic.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#111111"
+    font: serif
+    header: stripe
+    weight: bold
+
+  The New Yorker:
+    domains: [newyorker.com]
+    background: "#ffffff"
+    text: "#000000"
+    accent: "#000000"
+    font: serif
+    header: stripe
+    weight: bold
+
+  Newsweek:
+    domains: [newsweek.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#d4001a"
+    font: sans
+    header: stripe
+    weight: bold
+
+  The Hill:
+    domains: [thehill.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#1d4f91"
+    font: sans
+    header: stripe
+    weight: bold
+
+  DW:
+    domains: [dw.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#00a5ff"
+    font: sans
+    header: stripe
+    weight: bold
+
+  France 24:
+    domains: [france24.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#0073b7"
+    font: sans
+    header: stripe
+    weight: bold
+
+  The Independent:
+    domains: [independent.co.uk]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#f20024"
+    font: sans
+    header: stripe
+    weight: bold
+
+  The Telegraph:
+    domains: [telegraph.co.uk]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#00457c"
+    font: serif
+    header: stripe
+    weight: bold
+
+  ProPublica:
+    domains: [propublica.org]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#304154"
+    font: serif
+    header: stripe
+    weight: bold
+
+  Semafor:
+    domains: [semafor.com]
+    background: "#f7f6f1"
+    text: "#111111"
+    accent: "#111111"
+    font: sans
+    header: stripe
+    weight: bold
+
+  Vox:
+    domains: [vox.com]
+    background: "#ffffff"
+    text: "#131313"
+    accent: "#fff200"
+    font: sans
+    header: band
+    weight: bold
+
+  Slate:
+    domains: [slate.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#d11f2a"
+    font: sans
+    header: stripe
+    weight: bold
+
+  Foreign Policy:
+    domains: [foreignpolicy.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#c8102e"
+    font: serif
+    header: stripe
+    weight: bold
+
+  Foreign Affairs:
+    domains: [foreignaffairs.com]
+    background: "#fbf9f4"
+    text: "#1a1a1a"
+    accent: "#8b1d1d"
+    font: serif
+    header: stripe
+    weight: bold
+
+  Forbes:
+    domains: [forbes.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#111111"
+    font: serif
+    header: stripe
+    weight: bold
+
+  HuffPost:
+    domains: [huffpost.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#0dbe98"
+    font: sans
+    header: stripe
+    weight: bold
+
+  Business Insider:
+    domains: [businessinsider.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#2a6df4"
+    font: sans
+    header: stripe
+    weight: bold
+    name_color: "#111111"
+
+  Axios:
+    domains: [axios.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#1f6fff"
+    font: sans
+    header: stripe
+    weight: bold
+    name_color: "#111111"
+
+  Wired:
+    domains: [wired.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#000000"
+    font: sans
+    header: band
+    weight: bold
+
+  Ars Technica:
+    domains: [arstechnica.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#ff4e00"
+    font: sans
+    header: stripe
+    weight: bold
+
+  The Verge:
+    domains: [theverge.com]
+    background: "#131313"
+    text: "#ffffff"
+    accent: "#3cffd0"
+    font: sans
+    header: stripe
+    weight: black
+    name_color: "#ffffff"
+
+  TechCrunch:
+    domains: [techcrunch.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#00a562"
+    font: sans
+    header: stripe
+    weight: bold
+
+  Deseret News:
+    domains: [deseret.com]
+    background: "#FAF9F7"
+    text: "#111111"
+    accent: "#ffd217"
+    font: serif
+    header: band
+    weight: bold
+    logo: https://www.deseret.com/pf/resources/deseretnews/assets/images/pb/primaryLogo.svg?d=415
+
+  KSL:
+    domains: [ksl.com]
+    background: "#ffffff"
+    text: "#002d65"
+    accent: "#002d65"
+    font: sans
+    header: band
+    weight: bold
+
+  The Salt Lake Tribune:
+    domains: [sltrib.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#111111"
+    font: serif
+    header: stripe
+    weight: bold
+
+  Daily Herald:
+    domains: [heraldextra.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#14365d"
+    font: serif
+    header: stripe
+    weight: bold
+
+  Standard-Examiner:
+    domains: [standard.net]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#0099D3"
+    font: sans
+    header: stripe
+    weight: bold
+    name_color: "#111111"
+
+  FOX 13:
+    domains: [fox13now.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#182269"
+    font: sans
+    header: band
+    weight: bold
+
+  KUTV:
+    domains: [kutv.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#111111"
+    font: sans
+    header: band
+    weight: bold
+
+  ABC4:
+    domains: [abc4.com]
+    background: "#1c1c1c"
+    text: "#ffffff"
+    accent: "#3F5FDA"
+    font: sans
+    header: band
+    weight: bold
+
+  KUER:
+    domains: [kuer.org]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#ea0008"
+    font: serif
+    header: stripe
+    weight: bold
+
+  Utah News Dispatch:
+    domains: [utahnewsdispatch.com]
+    background: "#ffffff"
+    text: "#111111"
+    accent: "#efa704"
+    font: sans
+    header: stripe
+    weight: black
+    name_color: "#872828"
+    logo: https://utahnewsdispatch.com/wp-content/uploads/2023/12/UT-News-Dispatch-logo.png
