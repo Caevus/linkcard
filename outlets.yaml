@@ -287,7 +287,7 @@ outlets:
     accent: "#000000"
     font: serif
     header: stripe
-    weight: bold
+    weight: regular
     logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/The_New_Yorker_Logo.svg/960px-The_New_Yorker_Logo.svg.png
 
   Newsweek:
