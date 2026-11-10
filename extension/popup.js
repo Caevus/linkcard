@@ -9,7 +9,7 @@ const api = globalThis.browser ?? globalThis.chrome;
 
 function cantRead() {
   document.body.classList.add("msg");
-  document.getElementById("status").textContent = "Linkcard can't read this page";
+  document.getElementById("status").textContent = "LinkCard can't read this page";
 }
 
 async function main() {
