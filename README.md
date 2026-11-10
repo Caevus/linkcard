@@ -1,126 +1,62 @@
 # LinkCard
 
-LinkCard makes a Card and a Message from a news article. The Card is a 1200x630 image that uses the Theme of the article's Outlet. The Message gives the headline, Outlet, date, and link in a format for Discord. You can send both to Discord. LinkCard is for articles on websites that block Discord's own link previews (Embeds).
+Some news sites stop Discord from showing a link preview when you share their articles. LinkCard turns an article into a preview image styled to match the publication, plus a ready-to-paste message with the headline, publication, date, and link. Post both, and your link looks the way it should.
 
-LinkCard runs entirely in your browser. There is no server to run.
-
-## Use the page
+## Quick start
 
 1. Open https://caevus.github.io/linkcard/.
-2. Paste an article link, or use one of the capture methods below.
+2. Paste an article link, or use one of the methods below.
 3. Click **Copy image** or **Download PNG**.
 4. Click **Copy message**.
 5. Paste both into Discord.
 
-Many websites block LinkCard from fetching their pages. LinkCard works best when it reads the article from your own browser tab. These methods do that:
+## Getting the article
 
-### Bookmarklet
+Many news sites block outside tools from loading their pages, so you get the best results when the article is read straight from your open tab. In order of preference:
 
-1. Drag the **LinkCard** link on the page to your bookmarks bar.
-2. Open an article.
-3. Click the bookmark.
-
-LinkCard opens with the Card already made.
+- **Extension** or **bookmarklet**: reads the article from your tab. Best results.
+- **Pasted page source**: a good fallback if you can't use either.
+- **Link only**: the last resort. The headline is guessed from the address.
 
 ### Extension
 
-- Firefox: 
-  1. Download `linkcard-0.1.0.xpi` from the assets below
-  2. Drag it into a Firefox window, or go to `about:addons`, click the gear icon
-  3. Choose **Install Add-on From File**).
-- Chrome:
-  1. Open `chrome://extensions`.
-  2. Enable Developer mode.
-  3. Click Load unpacked.
-  4. Choose the `extension/` folder of this repo.
+**Firefox**
 
-On an article, click the extension button. The Collector reads the page, and the Card appears in the popup. To keep your edits, use **Open in tab**.
+1. Download the `.xpi` file from the [latest release](https://github.com/Caevus/linkcard/releases).
+2. Drag the file into a Firefox window. Or open `about:addons`, click the gear icon, and choose **Install Add-on From File**.
+
+**Chrome**
+
+1. Download or clone this repository.
+2. Open `chrome://extensions` and turn on Developer mode.
+3. Click Load unpacked and choose the `extension/` folder.
+
+To use it, click the extension's button while viewing an article. The preview appears in the popup. To keep editing in a full window, click **Open in tab**.
+
+### Bookmarklet
+
+1. On the [LinkCard page](https://caevus.github.io/linkcard/), drag the **LinkCard** link to your bookmarks bar.
+2. Open an article and click the bookmark.
+
+The page opens with the preview already made.
 
 ### Pasted page source
 
-1. On the article, open view-source.
-2. Select all.
-3. Copy the page source.
-4. On the LinkCard page, open "Or paste the article's page source".
-5. Paste the page source.
-6. Make the Card.
+1. On the article, open view-source and copy everything.
+2. On the LinkCard page, open **Or paste the article's page source** and paste it in.
 
-### URL only
+The preview appears as soon as you paste.
 
-If you paste only a link, LinkCard builds what it can from the link alone. Usually, it builds the Outlet and a headline that it guesses from the address. Check the fields under Edit details. Fix any field that is wrong.
+### Link only
 
-## Edit the Message and the Card
+If you paste only a link, the page fills in what it can from the address: usually the publication name and a guessed headline. Check them under **Edit details** and fix anything that's wrong.
 
-Under Edit details, you can change the Headline, Outlet, and Date. The Card and the Message update together. You can type dates in any form, such as "November 9, 2026". By default, the Message wraps the link in `<>`, so Discord does not add its own Embed. To leave the link bare, clear that box.
+## Editing the image and message
 
-## Edit outlets.yaml
+Under **Edit details**, you can change the **Headline**, **Outlet** (the publication name), and **Date**. The image and message update together. Dates can be typed in any form, such as "November 9, 2026".
 
-`outlets.yaml` holds the Theme of each Outlet. The header of the file documents the fields. In short, each Outlet entry uses the name shown on the Card as its key, and it has these fields:
+By default, the message wraps the link in `<>` so Discord doesn't add its own preview underneath. To post the bare link instead, clear the **Wrap link in <> so Discord doesn't add its own preview** checkbox.
 
-- `domains`: The domains that map to this Outlet. Subdomains match.
-- `background`, `text`, `accent`: The colors. Write each color in quotes, such as `"#ffffff"`.
-- `font`: `serif` or `sans`.
-- `header`: `band` (a solid bar across the top) or `stripe` (a thin bar down the left edge).
-- `weight`: `regular`, `bold`, or `black`.
-- `name_color`: optional. The color of the Outlet name on the stripe header.
-- `logo`: optional. Use a file in `logos/` or a link to an image.
+## Contributing
 
-Any Outlet that is not listed uses the `default` Theme.
-
-### Logos
-
-1. Put the image (PNG, JPG, or WebP) in `logos/`.
-2. Name the image in `outlets.yaml`, for example `logo: logos/nyt.png`.
-
-LinkCard shows a logo only when `logo:` names it. LinkCard fits the logo into a 460x52 box with no white background. Because the box has no white background, choose a logo that suits the Theme. See `logos/README.md`.
-
-## Releasing the extension
-
-The Firefox extension is a listed add-on on addons.mozilla.org (AMO). To release a new version:
-
-1. Bump `version` in `extension/manifest.json`.
-2. Run `npx web-ext lint --source-dir extension` and fix any errors or warnings.
-3. Run `node scripts/sign-firefox.mjs`. This signs the extension on the listed channel.
-
-AMO reviews the new version and publishes it. Firefox users then receive the update automatically.
-
-## Local development
-
-LinkCard is a set of static files.
-
-1. Serve the repo root with any static server, for example:
-
-   ```
-   python -m http.server 8000
-   ```
-
-2. Open http://localhost:8000/.
-
-To use your local server with the extension, follow these steps:
-
-1. Set `SITE_URL` in `extension/config.js` to your local server, for example `http://localhost:8000/`.
-2. Reload the extension.
-
-Do not commit that change.
-
-The extension keeps copies of `js/collector.js` and `js/fragment.js` in `extension/lib/`. After you change either file, run this command:
-
-```
-node scripts/sync-extension.mjs
-```
-
-To compare without copying, add `--check`.
-
-Run the tests with this command:
-
-```
-node --test
-```
-
-The tests check that LinkCard parses saved Snapshots of real articles correctly. To add a fixture, see `test/fixtures/README.md`.
-
-CI runs the syntax, sync, and test checks on every push.
-
-Run `git config core.hooksPath .githooks` once after cloning to enable the pre-commit sync check.
-
-The `python-final` tag holds the last version of the old Python app.
+To customize how publications look, run the project locally, or release a new version, see [CONTRIBUTING.md](CONTRIBUTING.md).
