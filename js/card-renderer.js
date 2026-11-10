@@ -22,12 +22,33 @@ function wrap(ctx, text, maxW) {
   return lines;
 }
 
+/** Load an image; resolves null on any failure. Cross-origin requests are anonymous so the canvas stays exportable. */
+function loadImage(src) {
+  return new Promise((done) => {
+    if (!src) return done(null);
+    const img = new Image();
+    if (!src.startsWith("data:")) img.crossOrigin = "anonymous";
+    img.onload = () => done(img.naturalWidth ? img : null);
+    img.onerror = () => done(null);
+    try { img.src = new URL(src, document.baseURI).href; } catch { done(null); }
+  });
+}
+
+const fit = (img, maxW, maxH) => {
+  const s = Math.min(maxW / img.naturalWidth, maxH / img.naturalHeight);
+  return [Math.max(1, Math.round(img.naturalWidth * s)), Math.max(1, Math.round(img.naturalHeight * s))];
+};
+
 /**
+ * Draws the Card. Async because logo and icon images load first.
  * @param {HTMLCanvasElement} canvas
- * @param {{headline:string, outlet:string, date:string, domain:string}} article
+ * @param {{headline:string, outlet:string, date:string, domain:string, icon?:string|null}} article
  * @param {ReturnType<import("./theme.js").resolveTheme>} t
+ * @param {string|null} [logo] configured logo: repo-relative path or image link
  */
-export function renderCard(canvas, { headline, outlet, date, domain }, t) {
+export async function renderCard(canvas, { headline, outlet, date, domain, icon }, t, logo = null) {
+  const logoImg = await loadImage(logo);
+  const iconImg = logoImg ? null : await loadImage(icon);
   canvas.width = W;
   canvas.height = H;
   const ctx = canvas.getContext("2d");
@@ -44,11 +65,32 @@ export function renderCard(canvas, { headline, outlet, date, domain }, t) {
     ctx.fillRect(0, 0, 18, H);
     cy = 90;
   }
-  ctx.fillStyle = css(t.band ? t.onBand : t.label);
-  ctx.font = `700 30px ${SANS}`;
   ctx.textBaseline = "middle";
   ctx.textAlign = "left";
-  ctx.fillText((outlet || "").toUpperCase(), PAD, cy);
+  let nameX = PAD;
+  if (logoImg) {
+    // configured logo: drawn directly, no chip
+    const [w, h] = fit(logoImg, 460, 52);
+    ctx.drawImage(logoImg, PAD, cy - Math.floor(h / 2), w, h);
+  } else {
+    if (iconImg) {
+      const [w, h] = fit(iconImg, 52, 52);
+      const top = cy - Math.floor(h / 2);
+      let x = PAD;
+      if (t.band || t.dark) {
+        ctx.fillStyle = "#fff";
+        ctx.beginPath();
+        ctx.roundRect(x, top - 10, w + 20, h + 20, 12);
+        ctx.fill();
+        x += 10;
+      }
+      ctx.drawImage(iconImg, x, top, w, h);
+      nameX = x + w + (t.band || t.dark ? 10 : 0) + 18;
+    }
+    ctx.fillStyle = css(t.band ? t.onBand : t.label);
+    ctx.font = `700 30px ${SANS}`;
+    ctx.fillText((outlet || "").toUpperCase(), nameX, cy);
+  }
 
   // headline: shrink from 68 in steps of 2 until at most five lines fit
   const family = t.serif ? SERIF : SANS;

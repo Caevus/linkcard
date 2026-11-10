@@ -8,8 +8,10 @@
 #   weight:      regular, bold, or black    (black thickens the bold font slightly; there is no true Black)
 #   name_color:  optional. Outlet-name color at the top. Defaults to the accent color.
 #                Only applies to the stripe header; on a band the name is white or black, whichever reads better.
-#   logo:        optional. Link to a PNG, JPG, or WebP logo (not SVG). Downloaded once, then cached.
-#                A file in the logos folder takes priority over this link.
+#   logo:        optional. A file in the logos folder (logo: logos/nyt.png) or a link to an image
+#                (logo: https://...). Drawn directly on the card, no white chip. A link must come from a
+#                host that allows other sites to use its images (Wikimedia does); otherwise the card falls
+#                back to the site's own icon. Logos are never found by filename; list them here.
 # Colors must be in quotes ("#ffffff"), since # starts a comment in YAML.
 # Colors are from memory and approximate. Unlisted outlets use the default look below.
 

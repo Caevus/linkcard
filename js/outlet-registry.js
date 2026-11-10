@@ -19,7 +19,7 @@ function toSpec(o) {
     band: String(o.header ?? "stripe").toLowerCase() === "band",
     weight: o.weight ?? "bold",
     nameColor: o.name_color ? String(o.name_color) : null,
-    logo: o.logo ? String(o.logo) : null, // unused until the logos ticket
+    logo: o.logo ? String(o.logo) : null, // repo-relative path or image link
   };
 }
 
