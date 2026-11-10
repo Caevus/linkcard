@@ -1,3 +1,10 @@
 .scratch/
 __pycache__/
 .claude/
+.env
+extension/web-ext-artifacts/
+web-ext-artifacts/
+extension/README.md
+scripts/
+extension/.amo-upload-uuid
+extension/README.md
