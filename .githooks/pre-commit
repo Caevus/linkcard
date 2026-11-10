@@ -1,0 +1,6 @@
+#!/bin/sh
+# Blocks a commit when extension/lib/ differs from js/. Fix with: node scripts/sync-extension.mjs
+if ! node scripts/sync-extension.mjs --check >/dev/null; then
+  echo "pre-commit: extension/lib is out of sync with js/. Run: node scripts/sync-extension.mjs" >&2
+  exit 1
+fi

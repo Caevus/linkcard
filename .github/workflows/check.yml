@@ -1,0 +1,27 @@
+name: Check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Syntax check
+        run: |
+          while IFS= read -r -d '' f; do
+            node --check "$f" || exit 1
+          done < <(find js extension scripts test \( -name '*.js' -o -name '*.mjs' \) -print0)
+
+      - name: Extension sync check
+        run: node scripts/sync-extension.mjs --check
+
+      - name: Tests
+        run: node --test
