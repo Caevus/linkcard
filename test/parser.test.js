@@ -1,5 +1,6 @@
 // Parser contract: every fixture in test/fixtures is a saved Snapshot plus its expected values.
 // Checks only headline, outlet, date, link. See test/fixtures/README.md.
+process.env.TZ = "America/Denver"; // pin the viewer zone so date results do not depend on the machine
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
