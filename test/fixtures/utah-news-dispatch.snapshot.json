@@ -1,0 +1,291 @@
+{
+  "version": 1,
+  "url": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/",
+  "canonical": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/",
+  "meta": [
+    {
+      "key": "viewport",
+      "content": "width=device-width, initial-scale=1"
+    },
+    {
+      "key": "robots",
+      "content": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "key": "sn_version",
+      "content": "v1.144.5"
+    },
+    {
+      "key": "description",
+      "content": "Gov. Spencer Cox said Utah Republican leaders should self reflect after the blue wave flipped GOP seats in the Utah House."
+    },
+    {
+      "key": "og:locale",
+      "content": "en_US"
+    },
+    {
+      "key": "og:type",
+      "content": "article"
+    },
+    {
+      "key": "og:title",
+      "content": "Utah Gov. Cox: Republicans ‘suffered a historic defeat.' Now, he says they have to ‘listen’ • Utah News Dispatch"
+    },
+    {
+      "key": "og:description",
+      "content": "Gov. Spencer Cox said Utah Republican leaders should self reflect after the blue wave flipped GOP seats in the Utah House."
+    },
+    {
+      "key": "og:url",
+      "content": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/"
+    },
+    {
+      "key": "og:site_name",
+      "content": "Utah News Dispatch"
+    },
+    {
+      "key": "article:publisher",
+      "content": "https://www.facebook.com/UtahNewsDispatch"
+    },
+    {
+      "key": "article:published_time",
+      "content": "2026-11-10T01:37:05+00:00"
+    },
+    {
+      "key": "article:modified_time",
+      "content": "2026-11-10T04:02:50+00:00"
+    },
+    {
+      "key": "author",
+      "content": "Katie McKellar"
+    },
+    {
+      "key": "twitter:card",
+      "content": "summary_large_image"
+    },
+    {
+      "key": "twitter:creator",
+      "content": "@KatieMcKellar1"
+    },
+    {
+      "key": "twitter:site",
+      "content": "@UTNewsDispatch"
+    },
+    {
+      "key": "twitter:label1",
+      "content": "Written by"
+    },
+    {
+      "key": "twitter:data1",
+      "content": "Katie McKellar"
+    },
+    {
+      "key": "twitter:label2",
+      "content": "Est. reading time"
+    },
+    {
+      "key": "twitter:data2",
+      "content": "9 minutes"
+    },
+    {
+      "key": "generator",
+      "content": "WordPress 6.9.11"
+    },
+    {
+      "key": "og:image",
+      "content": "https://utahnewsdispatch.com/wp-content/uploads/2026/11/PBS-Gov-Conf_SGW_0000286-copy-2048x1365.jpg"
+    },
+    {
+      "key": "og:image:width",
+      "content": "2048"
+    },
+    {
+      "key": "og:image:height",
+      "content": "1365"
+    },
+    {
+      "key": "og:image:type",
+      "content": "image/jpeg"
+    },
+    {
+      "key": "msapplication-TileImage",
+      "content": "https://utahnewsdispatch.com/wp-content/uploads/2023/12/cropped-UT-square-icon-270x270.png"
+    }
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/#article",
+          "isPartOf": {
+            "@id": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/"
+          },
+          "author": [
+            {
+              "@id": "https://utahnewsdispatch.com/#/schema/person/5e5c3ae8a8653044ff1df334131d3042"
+            }
+          ],
+          "headline": "Utah Gov. Cox: Republicans ‘suffered a historic defeat.&#8217; Now, he says they have to ‘listen’",
+          "datePublished": "2026-11-10T01:37:05+00:00",
+          "dateModified": "2026-11-10T04:02:50+00:00",
+          "mainEntityOfPage": {
+            "@id": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/"
+          },
+          "wordCount": 2011,
+          "publisher": {
+            "@id": "https://utahnewsdispatch.com/#organization"
+          },
+          "image": {
+            "@id": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/#primaryimage"
+          },
+          "thumbnailUrl": "https://utahnewsdispatch.com/wp-content/uploads/2026/11/PBS-Gov-Conf_SGW_0000286-copy.jpg",
+          "keywords": [
+            "blue wave",
+            "Democrats",
+            "Politics",
+            "Republicans",
+            "Spencer Cox",
+            "Utah",
+            "Utah Legislature",
+            "Utah politics"
+          ],
+          "articleSection": [
+            "Election 2026",
+            "Gov &amp; Politics"
+          ],
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/",
+          "url": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/",
+          "name": "Utah Gov. Cox: Republicans ‘suffered a historic defeat.' Now, he says they have to ‘listen’ &#8226; Utah News Dispatch",
+          "isPartOf": {
+            "@id": "https://utahnewsdispatch.com/#website"
+          },
+          "primaryImageOfPage": {
+            "@id": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/#primaryimage"
+          },
+          "image": {
+            "@id": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/#primaryimage"
+          },
+          "thumbnailUrl": "https://utahnewsdispatch.com/wp-content/uploads/2026/11/PBS-Gov-Conf_SGW_0000286-copy.jpg",
+          "datePublished": "2026-11-10T01:37:05+00:00",
+          "dateModified": "2026-11-10T04:02:50+00:00",
+          "description": "Gov. Spencer Cox said Utah Republican leaders should self reflect after the blue wave flipped GOP seats in the Utah House.",
+          "breadcrumb": {
+            "@id": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/#breadcrumb"
+          },
+          "inLanguage": "en-US",
+          "potentialAction": [
+            {
+              "@type": "ReadAction",
+              "target": [
+                "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/"
+              ]
+            }
+          ]
+        },
+        {
+          "@type": "ImageObject",
+          "inLanguage": "en-US",
+          "@id": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/#primaryimage",
+          "url": "https://utahnewsdispatch.com/wp-content/uploads/2026/11/PBS-Gov-Conf_SGW_0000286-copy.jpg",
+          "contentUrl": "https://utahnewsdispatch.com/wp-content/uploads/2026/11/PBS-Gov-Conf_SGW_0000286-copy.jpg",
+          "width": 2400,
+          "height": 1600,
+          "caption": "Gov. Spencer J. Cox speaks during the governor's news conference broadcast by PBS Utah at the Eccles Broadcast Center in Salt Lake City on Monday, Nov. 9, 2026. (Pool photo by Scott G Winterton/Deseret News)"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://utahnewsdispatch.com/2026/11/09/utah-gov-cox-republicans-have-to-listen-after-historic-defeat-blue-wave/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://utahnewsdispatch.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Utah Gov. Cox: Republicans ‘suffered a historic defeat.&#8217; Now, he says they have to ‘listen’"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://utahnewsdispatch.com/#website",
+          "url": "https://utahnewsdispatch.com/",
+          "name": "Utah News Dispatch",
+          "description": "Reporting for and from the crossroads of the West",
+          "publisher": {
+            "@id": "https://utahnewsdispatch.com/#organization"
+          },
+          "potentialAction": [
+            {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://utahnewsdispatch.com/?s={search_term_string}"
+              },
+              "query-input": {
+                "@type": "PropertyValueSpecification",
+                "valueRequired": true,
+                "valueName": "search_term_string"
+              }
+            }
+          ],
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://utahnewsdispatch.com/#organization",
+          "name": "Utah News Dispatch",
+          "url": "https://utahnewsdispatch.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "inLanguage": "en-US",
+            "@id": "https://utahnewsdispatch.com/#/schema/logo/image/",
+            "url": "https://utahnewsdispatch.com/wp-content/uploads/2023/12/UT-social-share.png",
+            "contentUrl": "https://utahnewsdispatch.com/wp-content/uploads/2023/12/UT-social-share.png",
+            "width": 2401,
+            "height": 1261,
+            "caption": "Utah News Dispatch"
+          },
+          "image": {
+            "@id": "https://utahnewsdispatch.com/#/schema/logo/image/"
+          },
+          "sameAs": [
+            "https://www.facebook.com/UtahNewsDispatch",
+            "https://x.com/UTNewsDispatch"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://utahnewsdispatch.com/#/schema/person/5e5c3ae8a8653044ff1df334131d3042",
+          "name": "Katie McKellar",
+          "image": {
+            "@type": "ImageObject",
+            "inLanguage": "en-US",
+            "@id": "https://utahnewsdispatch.com/wp-content/uploads/2023/12/UT-Katie-McKellar-Square-150x150.jpg8173746eca9d648ce52f9d1f25bd6b7b",
+            "url": "https://utahnewsdispatch.com/wp-content/uploads/2023/12/UT-Katie-McKellar-Square-150x150.jpg",
+            "contentUrl": "https://utahnewsdispatch.com/wp-content/uploads/2023/12/UT-Katie-McKellar-Square-150x150.jpg",
+            "caption": "Katie McKellar"
+          },
+          "description": "Katie McKellar covers Utah government as a senior reporter for Utah News Dispatch. She specializes in political reporting, covering the governor and the Utah Legislature, with expertise in beats including growth, housing and homelessness.",
+          "sameAs": [
+            "https://x.com/KatieMcKellar1"
+          ],
+          "url": "https://utahnewsdispatch.com/author/katie-mckellar/"
+        }
+      ]
+    }
+  ],
+  "time": "2026-11-09 18:37",
+  "h1": "Utah Gov. Cox: Republicans ‘suffered a historic defeat.’ Now, he says they have to ‘listen’",
+  "title": "Utah Gov. Cox: Republicans ‘suffered a historic defeat.' Now, he says they have to ‘listen’ • Utah News Dispatch",
+  "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAABpFBMVEXvpwbupgbGigTDiATloAVUOwJROAHupgWicQQKBwCebgPrpAXJjAU3JgEAAAA1JQHNjwXtpQXspQXBhwRkRgIfFgAGBAAmGgByUALpowWTZgMeFQAdFABjRQKgcAO3gAS2fwSYagNWPAIVDgAsHgGrdwSRZQMQCwBHMQHChwSxfAQbEwC9hAQcEwBJMwHXlgXcmgXmoAUyIwEvIQHSkwVcQAIhFwDWlgWmdARnSAItHwF5VAKseAQSDAB7VgIaEgBsSwLVlQWlcwRlRgIoGwAHBQBhRALnoQVONgEwIQHSkgU2JgEIBgDamAVqSgImGwChcAOLYQMDAgCfbwPknwUUDgAnGwDWlQWpdgTEiAQLBwDpogVBLQEIBQBfQgKodQSebwM0JAHgnQWKYAObbAPEiQRpSQLtpgWFXAPmoQVNNgExIgHqowXUlAWqdwQRDAB7VgO+hQSVaAMrHgHFiQTTkwVFMAHZmAXspAXoogWteQQZEQBkRQK0fgSzfQSUaAMSDQBmRwIjGQAFBAAJBgAEAwAqHQF0UQLQkQXLjgXOkAVROQEufHc6AAABdUlEQVQ4y71T11ICQRAc7oBzBUZukVPMCRNgFhUxgAkUE4JgwgRiRjHnnH/aB8qiJJwPls5rd/XsdvcA/PtIJD8QGFYcl8rkUjGcyyAkk0uPK5QqxCw1nwammmytQIiQk6tOKaLLyy8oLCouKS0rr9CnEKGVVdU1FABAV6sy6JM1jKa6+hizoVHZ1NyStKDVzAAAbWvvsHRSa1d3ggTH9vTy1Gbv6x9AHOSHHM7hbwxpxohLPzo2LiAiChMAk27VlCfuPyMj6GWMXkRExGkfgF9AIme/cpHMyGfRy8zZ5xcQEQMUYFFA4tDEg5MuLbv8IFkpzY9tgFV3VtDz7ZEhwxoFCK+7cdoHsLG5NZzwje2AlgWAnQoMUOB2I3tJTu0XVNsAuOiBFbhDp/MoyUk+Gjk2KkB3cnp2vmWypohLFzVfXAavrm/Kbi36lInzobv7h0fX0/PLa7rO0DcV4vJ7WKRyU4QEObFSej4cHvFas5rfHs4fzCf8HTjFOg1ORgAAAABJRU5ErkJggg=="
+}

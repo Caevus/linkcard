@@ -1,0 +1,359 @@
+{
+  "version": 1,
+  "url": "https://www.nytimes.com/2026/11/09/us/california-house-40-kim-calvert.html",
+  "canonical": "https://www.nytimes.com/2026/11/09/us/california-house-40-kim-calvert.html",
+  "meta": [
+    {
+      "key": "robots",
+      "content": "noarchive, max-image-preview:large"
+    },
+    {
+      "key": "description",
+      "content": "After redistricting, Mr. Calvert ended up running against and defeating Representative Young Kim."
+    },
+    {
+      "key": "twitter:url",
+      "content": "https://www.nytimes.com/2026/11/09/us/california-house-40-kim-calvert.html"
+    },
+    {
+      "key": "twitter:title",
+      "content": "Rep. Ken Calvert Wins House Battle Between Two California Republicans"
+    },
+    {
+      "key": "twitter:description",
+      "content": "After redistricting, Mr. Calvert ended up running against and defeating Representative Young Kim."
+    },
+    {
+      "key": "twitter:image",
+      "content": "https://static01.nyt.com/images/2026/11/03/multimedia/03midterms-hfo-ca-40-02-kwbh/03midterms-hfo-ca-40-02-kwbh-videoSixteenByNine3000.jpg"
+    },
+    {
+      "key": "twitter:image:alt",
+      "content": "Representative Ken Calvert won in one of the last remaining Republican strongholds in California."
+    },
+    {
+      "key": "twitter:card",
+      "content": "summary_large_image"
+    },
+    {
+      "key": "og:url",
+      "content": "https://www.nytimes.com/2026/11/09/us/california-house-40-kim-calvert.html"
+    },
+    {
+      "key": "og:type",
+      "content": "article"
+    },
+    {
+      "key": "og:title",
+      "content": "Rep. Ken Calvert Wins House Battle Between Two California Republicans"
+    },
+    {
+      "key": "og:image",
+      "content": "https://static01.nyt.com/images/2026/11/03/multimedia/03midterms-hfo-ca-40-02-kwbh/03midterms-hfo-ca-40-02-kwbh-facebookJumbo.jpg"
+    },
+    {
+      "key": "og:image:alt",
+      "content": "Representative Ken Calvert won in one of the last remaining Republican strongholds in California."
+    },
+    {
+      "key": "og:description",
+      "content": "After redistricting, Mr. Calvert ended up running against and defeating Representative Young Kim."
+    },
+    {
+      "key": "article:published_time",
+      "content": "2026-11-10T02:38:10.036Z"
+    },
+    {
+      "key": "article:modified_time",
+      "content": "2026-11-10T02:38:10.036Z"
+    },
+    {
+      "key": "articleid",
+      "content": "100000011228336"
+    },
+    {
+      "key": "nyt_uri",
+      "content": "nyt://article/92aba1f4-e63e-5f25-b310-ce82e68f2225"
+    },
+    {
+      "key": "pubp_event_id",
+      "content": "pubp://event/30f609b2e7ff4c269670bdb6c0f1a9bd"
+    },
+    {
+      "key": "image",
+      "content": "https://static01.nyt.com/images/2026/11/03/multimedia/03midterms-hfo-ca-40-02-kwbh/03midterms-hfo-ca-40-02-kwbh-facebookJumbo.jpg"
+    },
+    {
+      "key": "byl",
+      "content": "By Jennifer Medina"
+    },
+    {
+      "key": "news_keywords",
+      "content": "2026 Midterm Elections,Ken Calvert,Young Kim,US Politics,House of Representatives,Congress,California"
+    },
+    {
+      "key": "pdate",
+      "content": "20261109"
+    },
+    {
+      "key": "article:section",
+      "content": "U.S."
+    },
+    {
+      "key": "article:author",
+      "content": "https://www.nytimes.com/by/jennifer-medina"
+    },
+    {
+      "key": "article:tag",
+      "content": "Midterm Elections (2026)"
+    },
+    {
+      "key": "article:tag",
+      "content": "Calvert, Ken"
+    },
+    {
+      "key": "article:tag",
+      "content": "Kim, Young O (1962- )"
+    },
+    {
+      "key": "article:tag",
+      "content": "United States Politics and Government"
+    },
+    {
+      "key": "article:tag",
+      "content": "House of Representatives"
+    },
+    {
+      "key": "article:tag",
+      "content": "California"
+    },
+    {
+      "key": "article:opinion",
+      "content": "false"
+    },
+    {
+      "key": "article:content_tier",
+      "content": "metered"
+    },
+    {
+      "key": "CG",
+      "content": "us"
+    },
+    {
+      "key": "SCG",
+      "content": ""
+    },
+    {
+      "key": "CN",
+      "content": "live-blog-20261106-midterm-elections-trump"
+    },
+    {
+      "key": "CT",
+      "content": "spotlight"
+    },
+    {
+      "key": "PT",
+      "content": "article"
+    },
+    {
+      "key": "PST",
+      "content": "News"
+    },
+    {
+      "key": "url",
+      "content": "https://www.nytimes.com/2026/11/09/us/california-house-40-kim-calvert.html"
+    },
+    {
+      "key": "msapplication-starturl",
+      "content": "https://www.nytimes.com"
+    },
+    {
+      "key": "al:android:url",
+      "content": "nyt://article/92aba1f4-e63e-5f25-b310-ce82e68f2225"
+    },
+    {
+      "key": "al:android:package",
+      "content": "com.nytimes.android"
+    },
+    {
+      "key": "al:android:app_name",
+      "content": "NYTimes"
+    },
+    {
+      "key": "twitter:app:name:googleplay",
+      "content": "NYTimes"
+    },
+    {
+      "key": "twitter:app:id:googleplay",
+      "content": "com.nytimes.android"
+    },
+    {
+      "key": "twitter:app:url:googleplay",
+      "content": "nyt://article/92aba1f4-e63e-5f25-b310-ce82e68f2225"
+    },
+    {
+      "key": "al:iphone:url",
+      "content": "nytimes://www.nytimes.com/2026/11/09/us/california-house-40-kim-calvert.html"
+    },
+    {
+      "key": "al:iphone:app_store_id",
+      "content": "284862083"
+    },
+    {
+      "key": "al:iphone:app_name",
+      "content": "NYTimes"
+    },
+    {
+      "key": "apple-itunes-app",
+      "content": "affiliate-data=ct=WEB_BANNER_CAMPAIGN, app-id=284862083, app-argument=nytimes://www.nytimes.com/2026/11/09/us/california-house-40-kim-calvert.html"
+    },
+    {
+      "key": "al:ipad:url",
+      "content": "nytimes://www.nytimes.com/2026/11/09/us/california-house-40-kim-calvert.html"
+    },
+    {
+      "key": "al:ipad:app_store_id",
+      "content": "357066198"
+    },
+    {
+      "key": "al:ipad:app_name",
+      "content": "NYTimes"
+    },
+    {
+      "key": "viewport",
+      "content": "width=device-width, initial-scale=1"
+    },
+    {
+      "key": "fb:app_id",
+      "content": "9869919170"
+    },
+    {
+      "key": "twitter:site",
+      "content": "@nytimes"
+    },
+    {
+      "key": "slack-app-id",
+      "content": "A0121HXPPTQ"
+    },
+    {
+      "key": "color-scheme",
+      "content": "light"
+    }
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "@id": "https://www.nytimes.com/2026/11/09/us/california-house-40-kim-calvert.html",
+      "description": "After redistricting, Mr. Calvert ended up running against and defeating Representative Young Kim.",
+      "image": [
+        {
+          "@context": "https://schema.org",
+          "@type": "ImageObject",
+          "url": "https://static01.nyt.com/images/2026/11/03/multimedia/03midterms-hfo-ca-40-02-kwbh/03midterms-hfo-ca-40-02-kwbh-videoSixteenByNineJumbo1600.jpg",
+          "height": 900,
+          "width": 1600,
+          "contentUrl": "https://static01.nyt.com/images/2026/11/03/multimedia/03midterms-hfo-ca-40-02-kwbh/03midterms-hfo-ca-40-02-kwbh-videoSixteenByNineJumbo1600.jpg",
+          "caption": "Representative Ken Calvert won in one of the last remaining Republican strongholds in California.",
+          "creditText": "Caroline Brehman/Associated Press"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "ImageObject",
+          "url": "https://static01.nyt.com/images/2026/11/03/multimedia/03midterms-hfo-ca-40-02-kwbh/03midterms-hfo-ca-40-02-kwbh-googleFourByThree.jpg",
+          "height": 600,
+          "width": 800,
+          "contentUrl": "https://static01.nyt.com/images/2026/11/03/multimedia/03midterms-hfo-ca-40-02-kwbh/03midterms-hfo-ca-40-02-kwbh-googleFourByThree.jpg",
+          "caption": "Representative Ken Calvert won in one of the last remaining Republican strongholds in California.",
+          "creditText": "Caroline Brehman/Associated Press"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "ImageObject",
+          "url": "https://static01.nyt.com/images/2026/11/03/multimedia/03midterms-hfo-ca-40-02-kwbh/03midterms-hfo-ca-40-02-kwbh-mediumSquareAt3X.jpg",
+          "height": 1800,
+          "width": 1800,
+          "contentUrl": "https://static01.nyt.com/images/2026/11/03/multimedia/03midterms-hfo-ca-40-02-kwbh/03midterms-hfo-ca-40-02-kwbh-mediumSquareAt3X.jpg",
+          "caption": "Representative Ken Calvert won in one of the last remaining Republican strongholds in California.",
+          "creditText": "Caroline Brehman/Associated Press"
+        }
+      ],
+      "mainEntityOfPage": "https://www.nytimes.com/2026/11/09/us/california-house-40-kim-calvert.html",
+      "url": "https://www.nytimes.com/2026/11/09/us/california-house-40-kim-calvert.html",
+      "inLanguage": "en",
+      "author": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "url": "https://www.nytimes.com/by/jennifer-medina",
+          "name": "Jennifer Medina"
+        }
+      ],
+      "dateModified": "2026-11-10T02:38:10.036Z",
+      "datePublished": "2026-11-10T02:38:10.036Z",
+      "headline": "Rep. Ken Calvert Wins House Battle Between Two California Republicans",
+      "publisher": {
+        "@id": "https://www.nytimes.com/#publisher",
+        "name": "The New York Times"
+      },
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".meteredContent"
+      },
+      "isPartOf": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "name": "The New York Times",
+        "productID": "nytimes.com:basic"
+      },
+      "copyrightHolder": {
+        "@id": "https://www.nytimes.com/#publisher",
+        "name": "The New York Times"
+      },
+      "sourceOrganization": {
+        "@id": "https://www.nytimes.com/#publisher",
+        "name": "The New York Times"
+      },
+      "copyrightYear": 2026,
+      "articleSection": "U.S.",
+      "keywords": [
+        "Midterm Elections (2026)",
+        "Calvert, Ken",
+        "Kim, Young O (1962- )",
+        "United States Politics and Government",
+        "House of Representatives",
+        "California"
+      ],
+      "isAccessibleForFree": false
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsMediaOrganization",
+      "name": "The New York Times",
+      "logo": {
+        "@context": "https://schema.org",
+        "@type": "ImageObject",
+        "url": "https://static01.nyt.com/images/icons/t_logo_291_black.png",
+        "height": 291,
+        "width": 291,
+        "contentUrl": "https://static01.nyt.com/images/icons/t_logo_291_black.png",
+        "creditText": "The New York Times"
+      },
+      "url": "https://www.nytimes.com/",
+      "@id": "https://www.nytimes.com/#publisher",
+      "publishingPrinciples": "https://www.nytimes.com/editorial-standards/ethical-journalism.html",
+      "diversityPolicy": "https://www.nytco.com/company/diversity-and-inclusion/",
+      "ethicsPolicy": "https://www.nytco.com/company/standards-ethics/",
+      "masthead": "https://www.nytimes.com/interactive/2023/01/28/admin/the-new-york-times-masthead.html",
+      "foundingDate": "1851-09-18",
+      "sameAs": "https://en.wikipedia.org/wiki/The_New_York_Times"
+    }
+  ],
+  "time": "2026-11-09T17:53:53.843967+00:00",
+  "h1": "Rep. Ken Calvert Wins House Battle Between Two California Republicans",
+  "title": "Rep. Ken Calvert Wins House Battle Between Two California Republicans - The New York Times",
+  "icon": null
+}
