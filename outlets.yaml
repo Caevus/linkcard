@@ -32,7 +32,7 @@ outlets:
     font: serif
     header: stripe
     weight: bold
-    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/The_New_York_Times_logo.png/960px-The_New_York_Times_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/The_New_York_Times_logo.png/960px-The_New_York_Times_logo.png
 
   The Washington Post:
     domains: [washingtonpost.com]
@@ -42,6 +42,7 @@ outlets:
     font: serif
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/The_Washington_Post_logo.svg/960px-The_Washington_Post_logo.svg.png
 
   The Wall Street Journal:
     domains: [wsj.com]
@@ -52,6 +53,7 @@ outlets:
     header: stripe
     weight: bold
     name_color: "#1a1a1a"
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/WSJ_Logo.svg/960px-WSJ_Logo.svg.png
 
   AP News:
     domains: [apnews.com]
@@ -71,6 +73,7 @@ outlets:
     header: stripe
     weight: bold
     name_color: "#262626"
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Reuters_logo_2024.svg/960px-Reuters_logo_2024.svg.png
 
   BBC News:
     domains: [bbc.com, bbc.co.uk]
@@ -78,8 +81,9 @@ outlets:
     text: "#141414"
     accent: "#bb1919"
     font: sans
-    header: band
+    header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/BBC_Logo_2021.svg/960px-BBC_Logo_2021.svg.png
 
   CNN:
     domains: [cnn.com]
@@ -89,6 +93,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/CNN_(White).svg/960px-CNN_(White).svg.png
 
   NPR:
     domains: [npr.org]
@@ -98,6 +103,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/NPR_new_logo.svg/960px-NPR_new_logo.svg.png
 
   PBS News:
     domains: [pbs.org]
@@ -116,6 +122,7 @@ outlets:
     font: serif
     header: band
     weight: bold
+    logo: 
 
   Bloomberg:
     domains: [bloomberg.com]
@@ -134,6 +141,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Fox_News_Channel_logo.svg/960px-Fox_News_Channel_logo.svg.png
 
   USA Today:
     domains: [usatoday.com]
@@ -141,8 +149,9 @@ outlets:
     text: "#111111"
     accent: "#009bfe"
     font: sans
-    header: band
+    header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/USA_Today_%282020-01-29%29.svg/960px-USA_Today_%282020-01-29%29.svg.png
 
   Politico:
     domains: [politico.com]
@@ -152,6 +161,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Politico-logo_2024_red.svg/960px-Politico-logo_2024_red.svg.png
 
   TIME:
     domains: [time.com]
@@ -170,6 +180,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/en/thumb/f/f2/Aljazeera_eng.svg/960px-Aljazeera_eng.svg.png
 
   Financial Times:
     domains: [ft.com]
@@ -180,6 +191,7 @@ outlets:
     header: stripe
     weight: bold
     name_color: "#262a33"
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Financial_Times_masthead.svg/960px-Financial_Times_masthead.svg.png
 
   NBC News:
     domains: [nbcnews.com]
@@ -196,8 +208,9 @@ outlets:
     text: "#111111"
     accent: "#000000"
     font: sans
-    header: band
+    header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/CBS_News_logo_%282020%29.svg/960px-CBS_News_logo_%282020%29.svg.png
 
   ABC News:
     domains: [abcnews.go.com]
@@ -207,6 +220,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/ABC_News_logo_2021.svg/960px-ABC_News_logo_2021.svg.png
 
   MS NOW:
     domains: [msnbc.com, ms.now]
@@ -234,6 +248,7 @@ outlets:
     font: serif
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Los_Angeles_Times_logo.svg/960px-Los_Angeles_Times_logo.svg.png
 
   New York Post:
     domains: [nypost.com]
@@ -242,7 +257,8 @@ outlets:
     accent: "#dc0000"
     font: sans
     header: band
-    weight: bold
+    weight: black
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/New_York_Post_logo.png/960px-New_York_Post_logo.png
 
   The Economist:
     domains: [economist.com]
@@ -252,6 +268,7 @@ outlets:
     font: serif
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/The_Economist_Logo.svg/960px-The_Economist_Logo.svg.png
 
   The Atlantic:
     domains: [theatlantic.com]
@@ -261,6 +278,7 @@ outlets:
     font: serif
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/The_Atlantic_Logo_11.2019.svg/960px-The_Atlantic_Logo_11.2019.svg.png
 
   The New Yorker:
     domains: [newyorker.com]
@@ -270,6 +288,7 @@ outlets:
     font: serif
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/The_New_Yorker_Logo.svg/960px-The_New_Yorker_Logo.svg.png
 
   Newsweek:
     domains: [newsweek.com]
@@ -279,6 +298,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Newsweek_Logo.svg/960px-Newsweek_Logo.svg.png
 
   The Hill:
     domains: [thehill.com]
@@ -288,6 +308,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/The_Hill_logo_%28blue_horizontal%29.svg/960px-The_Hill_logo_%28blue_horizontal%29.svg.png
 
   DW:
     domains: [dw.com]
@@ -295,7 +316,7 @@ outlets:
     text: "#111111"
     accent: "#00a5ff"
     font: sans
-    header: stripe
+    header: band
     weight: bold
 
   France 24:
@@ -306,6 +327,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/France_24_logo_%282013%29.svg/960px-France_24_logo_%282013%29.svg.png
 
   The Independent:
     domains: [independent.co.uk]
@@ -315,6 +337,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/en/thumb/4/40/The_Independent_news_logo.svg/960px-The_Independent_news_logo.svg.png
 
   The Telegraph:
     domains: [telegraph.co.uk]
@@ -324,6 +347,7 @@ outlets:
     font: serif
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/The_Telegraph.svg/960px-The_Telegraph.svg.png
 
   ProPublica:
     domains: [propublica.org]
@@ -333,6 +357,7 @@ outlets:
     font: serif
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/ProPublica-logo-2026.png/960px-ProPublica-logo-2026.png
 
   Semafor:
     domains: [semafor.com]
@@ -342,6 +367,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Semafor_text_logo.svg/960px-Semafor_text_logo.svg.png
 
   Vox:
     domains: [vox.com]
@@ -351,6 +377,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Vox_logo.svg/960px-Vox_logo.svg.png
 
   Slate:
     domains: [slate.com]
@@ -360,6 +387,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Slate_new_logo.svg/960px-Slate_new_logo.svg.png
 
   Foreign Policy:
     domains: [foreignpolicy.com]
@@ -394,7 +422,7 @@ outlets:
     text: "#111111"
     accent: "#0dbe98"
     font: sans
-    header: stripe
+    header: band
     weight: bold
 
   Business Insider:
@@ -406,6 +434,7 @@ outlets:
     header: stripe
     weight: bold
     name_color: "#111111"
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Business_Insider_2023_logo.svg/960px-Business_Insider_2023_logo.svg.png
 
   Axios:
     domains: [axios.com]
@@ -416,6 +445,7 @@ outlets:
     header: stripe
     weight: bold
     name_color: "#111111"
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Axios_logo_%282020%29.svg/960px-Axios_logo_%282020%29.svg.png
 
   Wired:
     domains: [wired.com]
@@ -423,8 +453,9 @@ outlets:
     text: "#111111"
     accent: "#000000"
     font: sans
-    header: band
-    weight: bold
+    header: stripe
+    weight: black
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Wired_logo.svg/960px-Wired_logo.svg.png
 
   Ars Technica:
     domains: [arstechnica.com]
@@ -434,6 +465,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Ars_Technica_logo_%282016%29.svg/960px-Ars_Technica_logo_%282016%29.svg.png
 
   The Verge:
     domains: [theverge.com]
@@ -444,6 +476,7 @@ outlets:
     header: stripe
     weight: black
     name_color: "#ffffff"
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/The_Verge_wordmark_2022.svg/960px-The_Verge_wordmark_2022.svg.png
 
   TechCrunch:
     domains: [techcrunch.com]
@@ -451,7 +484,7 @@ outlets:
     text: "#111111"
     accent: "#00a562"
     font: sans
-    header: stripe
+    header: band
     weight: bold
 
   Deseret News:
@@ -472,6 +505,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: https://static.ksl.com/graphics/KSL_logo.png
 
   The Salt Lake Tribune:
     domains: [sltrib.com]
@@ -481,12 +515,13 @@ outlets:
     font: serif
     header: stripe
     weight: bold
+    logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/The-Salt-Lake-Tribune-Logo.svg/960px-The-Salt-Lake-Tribune-Logo.svg.png
 
   Daily Herald:
     domains: [heraldextra.com]
     background: "#ffffff"
     text: "#111111"
-    accent: "#14365d"
+    accent: "#b02a29"
     font: serif
     header: stripe
     weight: bold
@@ -527,6 +562,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: https://www.abc4.com/wp-content/uploads/sites/4/2020/01/cropped-ABC4Logo.png
 
   KUER:
     domains: [kuer.org]
@@ -536,6 +572,7 @@ outlets:
     font: serif
     header: stripe
     weight: bold
+    logo: https://npr.brightspotcdn.com/dims4/default/4d71a38/2147483647/strip/true/crop/1375x350+0+0/resize/267x68!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F37%2F23%2F9da7bb7240dda1a000ed249871cc%2Fkuer-26-logo-horizontal-color-1375-350.jpg
 
   Utah News Dispatch:
     domains: [utahnewsdispatch.com]
