@@ -1,6 +1,6 @@
 # Contributing to LinkCard
 
-The glossary of project terms is in [GLOSSARY.md](GLOSSARY.md), and architecture decisions are in [docs/adr/](docs/adr/).
+The glossary of project terms is in [docs/GLOSSARY.md](docs/GLOSSARY.md), and architecture decisions are in [docs/adr/](docs/adr/).
 
 ## Development
 
