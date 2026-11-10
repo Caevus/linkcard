@@ -69,10 +69,10 @@ outlets:
     background: "#ffffff"
     text: "#262626"
     accent: "#fa6400"
+    name_color: "#262626"
     font: sans
     header: stripe
     weight: bold
-    name_color: "#262626"
     logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Reuters_logo_2024.svg/960px-Reuters_logo_2024.svg.png
 
   BBC News:
@@ -187,10 +187,10 @@ outlets:
     background: "#fff1e5"
     text: "#262a33"
     accent: "#990f3d"
+    name_color: "#262a33"
     font: serif
     header: stripe
     weight: bold
-    name_color: "#262a33"
     logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Financial_Times_masthead.svg/960px-Financial_Times_masthead.svg.png
 
   NBC News:
@@ -430,10 +430,10 @@ outlets:
     background: "#ffffff"
     text: "#111111"
     accent: "#2a6df4"
+    name_color: "#111111"
     font: sans
     header: stripe
     weight: bold
-    name_color: "#111111"
     logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Business_Insider_2023_logo.svg/960px-Business_Insider_2023_logo.svg.png
 
   Axios:
@@ -441,10 +441,10 @@ outlets:
     background: "#ffffff"
     text: "#111111"
     accent: "#1f6fff"
+    name_color: "#111111"
     font: sans
     header: stripe
     weight: bold
-    name_color: "#111111"
     logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Axios_logo_%282020%29.svg/960px-Axios_logo_%282020%29.svg.png
 
   Wired:
@@ -472,10 +472,10 @@ outlets:
     background: "#131313"
     text: "#ffffff"
     accent: "#3cffd0"
+    name_color: "#ffffff"
     font: sans
     header: stripe
     weight: black
-    name_color: "#ffffff"
     logo: https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/The_Verge_wordmark_2022.svg/960px-The_Verge_wordmark_2022.svg.png
 
   TechCrunch:
@@ -569,6 +569,7 @@ outlets:
     background: "#ffffff"
     text: "#111111"
     accent: "#ea0008"
+    name_color: "#111111"
     font: serif
     header: stripe
     weight: bold
@@ -579,8 +580,8 @@ outlets:
     background: "#ffffff"
     text: "#111111"
     accent: "#efa704"
+    name_color: "#872828"
     font: sans
     header: stripe
     weight: black
-    name_color: "#872828"
     logo: https://utahnewsdispatch.com/wp-content/uploads/2023/12/UT-News-Dispatch-logo.png
