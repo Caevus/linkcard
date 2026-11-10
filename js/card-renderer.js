@@ -9,21 +9,35 @@ const WEIGHT = { regular: 400, bold: 700, black: 900 };
 function wrap(ctx, text, maxW) {
   const lines = [];
   let line = "";
+  const fits = (s) => ctx.measureText(s).width <= maxW;
   for (const word of text.split(/\s+/).filter(Boolean)) {
     const trial = line ? `${line} ${word}` : word;
-    if (ctx.measureText(trial).width <= maxW) {
-      line = trial;
-    } else {
-      lines.push(line);
-      line = word;
+    if (fits(trial)) { line = trial; continue; }
+    if (line) lines.push(line);
+    line = word;
+    // a word wider than a whole line: break it by characters
+    while (!fits(line) && [...line].length > 1) {
+      const chars = [...line];
+      let n = chars.length - 1;
+      while (n > 1 && !fits(chars.slice(0, n).join(""))) n--;
+      lines.push(chars.slice(0, n).join(""));
+      line = chars.slice(n).join("");
     }
   }
   if (line) lines.push(line);
   return lines;
 }
 
-/** Load an image; resolves null on any failure. Cross-origin requests are anonymous so the canvas stays exportable. */
+const imageCache = new Map();
+
+/** Load an image (cached per src, failures included); resolves null on any failure. Cross-origin requests are anonymous so the canvas stays exportable. */
 function loadImage(src) {
+  if (!src) return Promise.resolve(null);
+  if (!imageCache.has(src)) imageCache.set(src, fetchImage(src));
+  return imageCache.get(src);
+}
+
+function fetchImage(src) {
   return new Promise((done) => {
     if (!src) return done(null);
     const img = new Image();

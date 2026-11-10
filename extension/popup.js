@@ -4,6 +4,7 @@ import { collectSnapshot } from "./lib/collector.js";
 import { encodeSnapshot, FRAGMENT_KEY } from "./lib/fragment.js";
 import { SITE_URL } from "./config.js";
 
+const ICON_TIMEOUT_MS = 1500;
 const api = globalThis.browser ?? globalThis.chrome;
 
 function cantRead() {
@@ -16,7 +17,13 @@ async function main() {
   const target = { tabId: tab.id };
   const [{ result: type }] = await api.scripting.executeScript({ target, func: () => document.contentType });
   if (type !== "text/html" && type !== "application/xhtml+xml") return cantRead();
-  const [{ result: snap }] = await api.scripting.executeScript({ target, func: collectSnapshot });
+  const slow = new Promise((r) => setTimeout(() => r(null), ICON_TIMEOUT_MS));
+  let snap = (await Promise.race([api.scripting.executeScript({ target, func: collectSnapshot }), slow]))?.[0]?.result;
+  if (!snap) {
+    // Icon capture is slow: make the page's fetch fail at once (the Collector then omits the icon) and collect again.
+    await api.scripting.executeScript({ target, func: () => { globalThis.fetch = () => Promise.reject(new Error("icon skipped")); } });
+    [{ result: snap }] = await api.scripting.executeScript({ target, func: collectSnapshot });
+  }
   if (!snap) return cantRead();
   const frame = document.createElement("iframe");
   frame.allow = "clipboard-write";

@@ -1,7 +1,7 @@
 // Parser: Snapshot (any version) or a URL string -> interpreted article.
 // Output shape (same for both modes): { headline, outlet, date, link, domain, icon }
 import { hostOf } from "./outlet-registry.js";
-import { articleFromUrl } from "./url-only.js";
+import { articleFromUrl, cleanLink } from "./url-only.js";
 
 export const CURRENT_SNAPSHOT_VERSION = 1;
 
@@ -14,7 +14,6 @@ export function upgradeSnapshot(s) {
 
 const DATE_META = ["article:published_time", "og:article:published_time", "og:published_time", "datePublished",
   "parsely-pub-date", "pubdate", "publishdate", "date", "sailthru.date", "DC.date.issued"];
-const TRACKING = /^(utm_|fbclid$|gclid$|mc_|ref$|ref_src$|igshid$|_ga$)/i;
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August",
   "September", "October", "November", "December"];
 
@@ -55,21 +54,11 @@ export function prettyDate(raw) {
   return "";
 }
 
-function cleanLink(url) {
-  try {
-    const u = new URL(url);
-    for (const k of [...u.searchParams.keys()]) if (TRACKING.test(k)) u.searchParams.delete(k);
-    return u.toString();
-  } catch {
-    return url;
-  }
-}
-
 const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "");
 
 /** Strip a trailing " | Outlet" or " - Outlet" when that suffix names the Outlet. */
 function stripSuffix(headline, names) {
-  const m = headline.match(/^(.*\S)\s+[|\-–—]\s+([^|\-–—]+)$/);
+  const m = headline.match(/^(.*\S)\s+[|\-–—]\s+(.+)$/);
   if (!m) return headline;
   const tail = norm(m[2]);
   return tail && names.some((n) => n && norm(n) === tail) ? m[1].trim() : headline;

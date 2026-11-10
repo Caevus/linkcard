@@ -4,7 +4,7 @@ import { hostOf } from "./outlet-registry.js";
 
 const TRACKING = /^(utm_|fbclid$|gclid$|mc_|ref$|ref_src$|igshid$|_ga$)/i;
 
-function cleanLink(url) {
+export function cleanLink(url) {
   try {
     const u = new URL(url);
     for (const k of [...u.searchParams.keys()]) if (TRACKING.test(k)) u.searchParams.delete(k);
