@@ -15,19 +15,21 @@
   .row { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 20px; }
   #notice { background: #fff4d6; border: 1px solid #e0c36a; padding: 8px; margin: 12px 0; }
   #error { color: #b00020; }
+  .framed .intro, .framed #paste, .framed #bookmarklet-note, .framed #url-field { display: none; }
+  body.framed { padding: 8px; }
   [hidden] { display: none !important; }
 </style>
 </head>
 <body>
 <main>
-  <h1>Linkcard</h1>
-  <p>Paste an article link. Get a Card and a Discord message to go with it.</p>
+  <h1 class="intro">Linkcard</h1>
+  <p class="intro">Paste an article link. Get a Card and a Discord message to go with it.</p>
 
-  <label for="url">Article link</label>
-  <input id="url" type="url" placeholder="https://apnews.com/article/..." autofocus>
+  <div id="url-field"><label for="url">Article link</label>
+  <input id="url" type="url" placeholder="https://apnews.com/article/..." autofocus></div>
   <p id="error" role="alert" hidden></p>
 
-  <p>Bookmarklet: drag <a id="bookmarklet" href="#">Linkcard</a> to your bookmarks bar, then click it on an article.</p>
+  <p id="bookmarklet-note">Bookmarklet: drag <a id="bookmarklet" href="#">Linkcard</a> to your bookmarks bar, then click it on an article.</p>
 
   <details id="paste">
     <summary>Or paste the article's page source</summary>
@@ -36,6 +38,7 @@
   </details>
 
   <section id="result" hidden>
+    <p><a id="openInTab" href="#" target="_blank" rel="noopener" hidden>Open in tab</a></p>
     <p id="notice">Linkcard didn't read the article. The details below are guessed from the link, so check them.</p>
 
     <details id="edit" open>

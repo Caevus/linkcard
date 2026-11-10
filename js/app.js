@@ -4,7 +4,7 @@ import { resolveTheme } from "./theme.js";
 import { renderCard } from "./card-renderer.js";
 import { buildMessage } from "./message.js";
 import { parseArticle, upgradeSnapshot } from "./parser.js";
-import { snapshotFromHash } from "./fragment.js";
+import { snapshotFromHash, editsFromHash, encodeSnapshot, encodeEdits, FRAGMENT_KEY, EDITS_KEY } from "./fragment.js";
 import { buildBookmarklet } from "./bookmarklet.js";
 import { collectSnapshot } from "./collector.js";
 import { recallEdits, rememberEdits } from "./edit-memory.js";
@@ -31,12 +31,25 @@ function onField() {
   updateSoon();
 }
 
+const framed = window.top !== window;
+if (framed) document.body.classList.add("framed");
+
+/** When framed (extension popup), "Open in tab" carries the Snapshot and current edits: the popup and a tab keep separate storage. */
+function refreshOpenInTab() {
+  if (!framed || !snapshot) return;
+  const own = location.href.split(/[?#]/)[0];
+  const edits = { headline: $("headline").value, outlet: $("outlet").value, date: $("date").value };
+  $("openInTab").href = `${own}#${FRAGMENT_KEY}${encodeSnapshot(snapshot)}&${EDITS_KEY}${encodeEdits(edits)}`;
+  $("openInTab").hidden = false;
+}
+
 let renderId = 0;
 async function update() {
   if (!article) return;
   article.headline = $("headline").value;
   article.outlet = $("outlet").value;
   article.date = $("date").value;
+  refreshOpenInTab();
   $("message").value = buildMessage(article, $("suppress").checked);
   const spec = registry.specFor(article.outlet, article.domain);
   const id = ++renderId;
@@ -141,6 +154,8 @@ function onFragment() {
   const a = parseArticle(snap, registry);
   if (!a || !a.link) return;
   $("url").value = a.link;
+  const edits = editsFromHash(location.hash);
+  if (edits) rememberEdits(a.link, edits);
   show(a, true, snap);
 }
 
