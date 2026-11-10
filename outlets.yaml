@@ -113,6 +113,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: logos/pbs.png
 
   The Guardian:
     domains: [theguardian.com]
@@ -122,7 +123,7 @@ outlets:
     font: serif
     header: band
     weight: bold
-    logo: 
+    logo: logos/theguardian.png
 
   Bloomberg:
     domains: [bloomberg.com]
@@ -132,6 +133,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: logos/bloomberg.png
 
   Fox News:
     domains: [foxnews.com]
@@ -171,6 +173,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: logos/time.png
 
   Al Jazeera:
     domains: [aljazeera.com]
@@ -201,6 +204,7 @@ outlets:
     font: sans
     header: stripe
     weight: bold
+    logo: logos/nbc.png
 
   CBS News:
     domains: [cbsnews.com]
@@ -230,6 +234,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: logos/msnow.png
 
   CNBC:
     domains: [cnbc.com]
@@ -239,6 +244,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: logos/cnbc.png
 
   Los Angeles Times:
     domains: [latimes.com]
@@ -318,6 +324,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: logos/dw.png
 
   France 24:
     domains: [france24.com]
@@ -415,6 +422,7 @@ outlets:
     font: serif
     header: stripe
     weight: bold
+    logo: logos/forbes.png
 
   HuffPost:
     domains: [huffpost.com]
@@ -424,6 +432,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: logos/huffpost.png
 
   Business Insider:
     domains: [businessinsider.com]
@@ -486,6 +495,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: logos/tc.png
 
   Deseret News:
     domains: [deseret.com]
@@ -525,16 +535,18 @@ outlets:
     font: serif
     header: stripe
     weight: bold
+    logo: logos/dailyherald.png
 
   Standard-Examiner:
     domains: [standard.net]
     background: "#ffffff"
     text: "#111111"
     accent: "#0099D3"
+    name_color: "#111111"
     font: sans
     header: stripe
     weight: bold
-    name_color: "#111111"
+    logo: logos/standardexaminer.png
 
   FOX 13:
     domains: [fox13now.com]
@@ -544,6 +556,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: logos/fox13ut.png
 
   KUTV:
     domains: [kutv.com]
@@ -553,6 +566,7 @@ outlets:
     font: sans
     header: band
     weight: bold
+    logo: logos/kutv.png
 
   ABC4:
     domains: [abc4.com]
