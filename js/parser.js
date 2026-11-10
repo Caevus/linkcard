@@ -93,12 +93,20 @@ export function prettyDate(raw) {
 
 const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "");
 
-/** Strip a trailing " | Outlet" or " - Outlet" when that suffix names the Outlet. */
+/** True when `tail` equals `name` ignoring punctuation, or starts with `name` as a whole word (case-insensitive). */
+function namesSuffix(tail, name) {
+  if (norm(tail) && norm(name) === norm(tail)) return true;
+  const t = tail.toLowerCase();
+  const n = name.trim().toLowerCase();
+  return t.startsWith(n) && (t.length === n.length || !/[\p{L}\p{N}]/u.test(t[n.length]));
+}
+
+/** Strip a trailing " | Outlet" or " - Outlet" when that suffix names the Outlet (or starts with its name, e.g. "CNN Politics"). */
 function stripSuffix(headline, names) {
   const m = headline.match(/^(.*\S)\s+[|\-–—•·]\s+(.+)$/);
   if (!m) return headline;
-  const tail = norm(m[2]);
-  return tail && names.some((n) => n && norm(n) === tail) ? m[1].trim() : headline;
+  const tail = m[2].trim();
+  return tail && names.some((n) => n && namesSuffix(tail, n)) ? m[1].trim() : headline;
 }
 
 /** input: a Snapshot object (any version) or an http(s) URL string. Returns null for an unusable URL string. */
