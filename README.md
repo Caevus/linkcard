@@ -24,7 +24,10 @@ LinkCard opens with the Card already made.
 
 ### Extension
 
-- Firefox: Install from addons.mozilla.org at https://addons.mozilla.org/firefox/addon/linkcard/ (placeholder until the listing is live). Firefox updates the extension from there.
+- Firefox: 
+  1. Download `linkcard-0.1.0.xpi` from the assets below
+  2. Drag it into a Firefox window, or go to `about:addons`, click the gear icon
+  3. Choose **Install Add-on From File**).
 - Chrome:
   1. Open `chrome://extensions`.
   2. Enable Developer mode.
