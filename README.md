@@ -24,7 +24,7 @@ LinkCard opens with the Card already made.
 
 ### Extension
 
-- Firefox: Install from (link to be added).
+- Firefox: Install from addons.mozilla.org at https://addons.mozilla.org/firefox/addon/linkcard/ (placeholder until the listing is live). Firefox updates the extension from there.
 - Chrome:
   1. Open `chrome://extensions`.
   2. Enable Developer mode.
@@ -70,6 +70,16 @@ Any Outlet that is not listed uses the `default` Theme.
 2. Name the image in `outlets.yaml`, for example `logo: logos/nyt.png`.
 
 LinkCard shows a logo only when `logo:` names it. LinkCard fits the logo into a 460x52 box with no white background. Because the box has no white background, choose a logo that suits the Theme. See `logos/README.md`.
+
+## Releasing the extension
+
+The Firefox extension is a listed add-on on addons.mozilla.org (AMO). To release a new version:
+
+1. Bump `version` in `extension/manifest.json`.
+2. Run `npx web-ext lint --source-dir extension` and fix any errors or warnings.
+3. Run `node scripts/sign-firefox.mjs`. This signs the extension on the listed channel.
+
+AMO reviews the new version and publishes it. Firefox users then receive the update automatically.
 
 ## Local development
 

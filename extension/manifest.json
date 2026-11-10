@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "LinkCard",
   "version": "0.1.0",
-  "description": "Make a Discord-ready Card and Message for the article you are reading.",
+  "description": "Generate a social media ready preview card and message for the article you are reading.",
   "permissions": ["activeTab", "scripting"],
   "action": {
     "default_title": "LinkCard",
@@ -17,6 +17,10 @@
     }
   },
   "browser_specific_settings": {
-    "gecko": { "id": "linkcard@caevus.github.io", "strict_min_version": "113.0" }
+    "gecko": {
+      "id": "linkcard@caevus.github.io",
+      "strict_min_version": "142.0",
+      "data_collection_permissions": { "required": ["none"] }
+    }
   }
 }

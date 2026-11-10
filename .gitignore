@@ -4,7 +4,6 @@ __pycache__/
 .env
 extension/web-ext-artifacts/
 web-ext-artifacts/
-extension/README.md
+extension/INSTRUCTIONS.md
 scripts/
 extension/.amo-upload-uuid
-extension/README.md

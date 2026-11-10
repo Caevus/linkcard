@@ -15,7 +15,7 @@
   .row { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 20px; }
   #notice { background: #fff4d6; border: 1px solid #e0c36a; padding: 8px; margin: 12px 0; }
   #error { color: #b00020; }
-  .framed .intro, .framed #paste, .framed #bookmarklet-note, .framed #url-field { display: none; }
+  .framed .intro, .framed #paste, .framed #bookmarklet-note, .framed #extension-note, .framed #url-field { display: none; }
   body.framed { padding: 8px; }
   [hidden] { display: none !important; }
 </style>
@@ -30,6 +30,8 @@
   <p id="error" role="alert" hidden></p>
 
   <p id="bookmarklet-note">Bookmarklet: drag <a id="bookmarklet" href="#">LinkCard</a> to your bookmarks bar, then click it on an article.</p>
+
+  <p id="extension-note">Firefox: <!-- Placeholder URL. Replace with the live listing once it is published on AMO. --><a href="https://addons.mozilla.org/firefox/addon/linkcard/" target="_blank" rel="noopener">Add to Firefox</a></p>
 
   <details id="paste">
     <summary>Or paste the article's page source</summary>
