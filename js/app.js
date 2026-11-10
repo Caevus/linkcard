@@ -31,14 +31,17 @@ function onField() {
   updateSoon();
 }
 
-function update() {
+let renderId = 0;
+async function update() {
   if (!article) return;
   article.headline = $("headline").value;
   article.outlet = $("outlet").value;
   article.date = $("date").value;
-  const theme = resolveTheme(registry.specFor(article.outlet, article.domain));
-  renderCard($("card"), article, theme);
   $("message").value = buildMessage(article, $("suppress").checked);
+  const spec = registry.specFor(article.outlet, article.domain);
+  const id = ++renderId;
+  await renderCard($("card"), article, resolveTheme(spec), spec.logo);
+  return id === renderId;
 }
 
 let timer;
@@ -88,7 +91,7 @@ for (const id of ["headline", "outlet", "date"]) $(id).addEventListener("input",
 $("suppress").addEventListener("change", update);
 
 $("download").addEventListener("click", async () => {
-  update();
+  await update();
   const a = document.createElement("a");
   a.href = URL.createObjectURL(await cardBlob());
   a.download = "linkcard.png";
@@ -98,7 +101,7 @@ $("download").addEventListener("click", async () => {
 
 $("copyImage").addEventListener("click", async () => {
   try {
-    update();
+    await update();
     await navigator.clipboard.write([new ClipboardItem({ "image/png": cardBlob() })]);
     flash($("copyImage"), "Copied");
   } catch {
