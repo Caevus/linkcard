@@ -2,3 +2,5 @@
 CLAUDE.md
 GLOSSARY.md
 docs/
+__pycache__/
+.claude/
