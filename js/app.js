@@ -3,12 +3,15 @@ import { loadRegistry } from "./outlet-registry.js";
 import { resolveTheme } from "./theme.js";
 import { renderCard } from "./card-renderer.js";
 import { buildMessage } from "./message.js";
-import { parseArticle } from "./parser.js";
+import { parseArticle, upgradeSnapshot } from "./parser.js";
+import { snapshotFromHash } from "./fragment.js";
+import { buildBookmarklet } from "./bookmarklet.js";
 import { collectSnapshot } from "./collector.js";
 import { recallEdits, rememberEdits } from "./edit-memory.js";
 
 const $ = (id) => document.getElementById(id);
 let registry = null;
+let snapshot = null; // the Snapshot behind the current Card, if any
 let article = null; // { headline, outlet, date, link, domain }
 
 function showError(text) {
@@ -50,8 +53,10 @@ function onLink() {
   show(a, false);
 }
 
-function show(a, fromSource) {
+function show(a, fromSource, snap = null) {
   article = a;
+  snapshot = snap;
+  $("saveSnapshot").hidden = !snap;
   fillFields(recallEdits(a.link) || a);
   $("notice").hidden = fromSource;
   $("result").hidden = false;
@@ -66,7 +71,7 @@ async function onSource() {
   const a = parseArticle(snap, registry);
   if (!a || !a.link) { showError("Could not find the article's address in that source. Paste the link above too."); return; }
   showError("");
-  show(a, true);
+  show(a, true, snap);
 }
 
 function flash(btn, text) {
@@ -111,9 +116,35 @@ $("copyMessage").addEventListener("click", async () => {
   }
 });
 
+$("saveSnapshot").addEventListener("click", () => {
+  if (!snapshot) return;
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(snapshot, null, 2)], { type: "application/json" }));
+  a.download = "snapshot.json";
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+});
+
+{
+  const own = location.origin === "null" ? location.href.split(/[?#]/)[0] : location.origin + location.pathname;
+  $("bookmarklet").href = buildBookmarklet(own);
+}
+
+/** Card from a Snapshot in the fragment; the fragment stays so a refresh rebuilds it. */
+function onFragment() {
+  const raw = snapshotFromHash(location.hash);
+  if (!raw) return;
+  const snap = upgradeSnapshot(raw);
+  const a = parseArticle(snap, registry);
+  if (!a || !a.link) return;
+  $("url").value = a.link;
+  show(a, true, snap);
+}
+
 try {
   registry = await loadRegistry();
-  if ($("url").value) onLink();
+  if (location.hash.startsWith("#snapshot=")) onFragment();
+  else if ($("url").value) onLink();
 } catch (e) {
   showError(`Could not load outlets.yaml: ${e.message}`);
 }
