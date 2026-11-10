@@ -1,82 +1,113 @@
-# Linkcard
+# LinkCard
 
-Linkcard turns a news article into a Card and a Message you can post to Discord. The Card is a 1200x630 image styled after the article's Outlet. The Message is the headline, Outlet, date, and link, formatted for Discord. It is for articles on sites that block Discord's own link previews (Embeds).
+LinkCard makes a Card and a Message from a news article. The Card is a 1200x630 image that uses the Theme of the article's Outlet. The Message gives the headline, Outlet, date, and link in a format for Discord. You can send both to Discord. LinkCard is for articles on websites that block Discord's own link previews (Embeds).
 
-Linkcard runs entirely in your browser. There is no server to run.
+LinkCard runs entirely in your browser. There is no server to run.
 
-## Using the page
+## Use the page
 
-Open https://caevus.github.io/linkcard/. Paste an article link, or use one of the capture methods below, then click **Copy image** (or **Download PNG**) and **Copy message**, and paste both into Discord.
+1. Open https://caevus.github.io/linkcard/.
+2. Paste an article link, or use one of the capture methods below.
+3. Click **Copy image** or **Download PNG**.
+4. Click **Copy message**.
+5. Paste both into Discord.
 
-Many sites block pages from fetching them, so reading the article from your own browser tab works best. These methods do that:
+Many websites block LinkCard from fetching their pages. LinkCard works best when it reads the article from your own browser tab. These methods do that:
 
 ### Bookmarklet
 
-Drag the **Linkcard** link on the page to your bookmarks bar. On an article, click the bookmark. Linkcard opens with the Card already made.
+1. Drag the **LinkCard** link on the page to your bookmarks bar.
+2. Open an article.
+3. Click the bookmark.
+
+LinkCard opens with the Card already made.
 
 ### Extension
 
-- Firefox: install from (link to be added).
-- Chrome: open `chrome://extensions`, turn on Developer mode, click Load unpacked, and choose the `extension/` folder of this repo.
+- Firefox: Install from (link to be added).
+- Chrome:
+  1. Open `chrome://extensions`.
+  2. Enable Developer mode.
+  3. Click Load unpacked.
+  4. Choose the `extension/` folder of this repo.
 
-Click the extension button on an article. The Collector reads the page and the Card appears in the popup. Use **Open in tab** to keep your edits.
+On an article, click the extension button. The Collector reads the page, and the Card appears in the popup. To keep your edits, use **Open in tab**.
 
 ### Pasted page source
 
-On the article, open view-source, select all, and copy. On the Linkcard page, open "Or paste the article's page source", paste it, and make the Card.
+1. On the article, open view-source.
+2. Select all.
+3. Copy the page source.
+4. On the LinkCard page, open "Or paste the article's page source".
+5. Paste the page source.
+6. Make the Card.
 
 ### URL only
 
-If you only paste a link, Linkcard builds what it can from the link alone, usually the Outlet and a headline guessed from the address. Check the Edit details fields and fix anything wrong.
+If you paste only a link, LinkCard builds what it can from the link alone. Usually, it builds the Outlet and a headline that it guesses from the address. Check the fields under Edit details. Fix any field that is wrong.
 
-## Editing the Message and Card
+## Edit the Message and the Card
 
-Under Edit details you can change the Headline, Outlet, and Date. The Card and Message update together. Dates can be typed in any form, such as "November 9, 2026". By default the Message wraps the link in `<>` so Discord does not add its own Embed. Untick that box to leave the link bare.
+Under Edit details, you can change the Headline, Outlet, and Date. The Card and the Message update together. You can type dates in any form, such as "November 9, 2026". By default, the Message wraps the link in `<>`, so Discord does not add its own Embed. To leave the link bare, clear that box.
 
-## Editing outlets.yaml
+## Edit outlets.yaml
 
-`outlets.yaml` holds each Outlet's Theme. The fields are documented in the header of the file. In short, each Outlet is keyed by the name shown on the Card and has:
+`outlets.yaml` holds the Theme of each Outlet. The header of the file documents the fields. In short, each Outlet entry uses the name shown on the Card as its key, and it has these fields:
 
-- `domains`: sites that map to this Outlet (subdomains match).
-- `background`, `text`, `accent`: colors, in quotes, such as `"#ffffff"`.
+- `domains`: The domains that map to this Outlet. Subdomains match.
+- `background`, `text`, `accent`: The colors. Write each color in quotes, such as `"#ffffff"`.
 - `font`: `serif` or `sans`.
-- `header`: `band` (solid bar across the top) or `stripe` (thin bar down the left edge).
+- `header`: `band` (a solid bar across the top) or `stripe` (a thin bar down the left edge).
 - `weight`: `regular`, `bold`, or `black`.
-- `name_color`: optional. Outlet name color on the stripe header.
-- `logo`: optional. A file in `logos/` or a link to an image.
+- `name_color`: optional. The color of the Outlet name on the stripe header.
+- `logo`: optional. Use a file in `logos/` or a link to an image.
 
-Outlets not listed use the `default` Theme.
+Any Outlet that is not listed uses the `default` Theme.
 
 ### Logos
 
-Put the image (PNG, JPG, or WebP) in `logos/` and name it in `outlets.yaml`, for example `logo: logos/nyt.png`. A logo is only shown if `logo:` names it. It is fitted into a 460x52 box with no white background, so pick one that suits the Theme. See `logos/README.md`.
+1. Put the image (PNG, JPG, or WebP) in `logos/`.
+2. Name the image in `outlets.yaml`, for example `logo: logos/nyt.png`.
+
+LinkCard shows a logo only when `logo:` names it. LinkCard fits the logo into a 460x52 box with no white background. Because the box has no white background, choose a logo that suits the Theme. See `logos/README.md`.
 
 ## Local development
 
-The site is static files. Serve the repo root with any static server:
+LinkCard is a set of static files.
 
-```
-python -m http.server 8000
-```
+1. Serve the repo root with any static server, for example:
 
-Then open http://localhost:8000/.
+   ```
+   python -m http.server 8000
+   ```
 
-To point the extension at your local server, set `SITE_URL` in `extension/config.js` (for example `http://localhost:8000/`) and reload the extension. Do not commit that change.
+2. Open http://localhost:8000/.
 
-The extension keeps copies of `js/collector.js` and `js/fragment.js` in `extension/lib/`. After changing either, run:
+To use your local server with the extension, follow these steps:
+
+1. Set `SITE_URL` in `extension/config.js` to your local server, for example `http://localhost:8000/`.
+2. Reload the extension.
+
+Do not commit that change.
+
+The extension keeps copies of `js/collector.js` and `js/fragment.js` in `extension/lib/`. After you change either file, run this command:
 
 ```
 node scripts/sync-extension.mjs
 ```
 
-Add `--check` to compare without copying.
+To compare without copying, add `--check`.
 
-Run the tests with:
+Run the tests with this command:
 
 ```
 node --test
 ```
 
-The tests check parsing of saved Snapshots against real articles. To add a fixture, see `test/fixtures/README.md`.
+The tests check that LinkCard parses saved Snapshots of real articles correctly. To add a fixture, see `test/fixtures/README.md`.
 
-The last version of the old Python app is the `python-final` tag.
+CI runs the syntax, sync, and test checks on every push.
+
+Run `git config core.hooksPath .githooks` once after cloning to enable the pre-commit sync check.
+
+The `python-final` tag holds the last version of the old Python app.

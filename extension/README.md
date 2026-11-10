@@ -1,4 +1,4 @@
-# Linkcard extension
+# LinkCard extension
 
 Thin shell (ADR 0001): runs the Collector in the active tab and frames the hosted page.
 
