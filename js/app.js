@@ -3,7 +3,8 @@ import { loadRegistry } from "./outlet-registry.js";
 import { resolveTheme } from "./theme.js";
 import { renderCard } from "./card-renderer.js";
 import { buildMessage } from "./message.js";
-import { articleFromUrl } from "./url-only.js";
+import { parseArticle } from "./parser.js";
+import { collectSnapshot } from "./collector.js";
 
 const $ = (id) => document.getElementById(id);
 let registry = null;
@@ -30,15 +31,31 @@ const updateSoon = () => { clearTimeout(timer); timer = setTimeout(update, 150);
 function onLink() {
   const text = $("url").value.trim();
   if (!text) { article = null; $("result").hidden = true; showError(""); return; }
-  const a = articleFromUrl(text, registry);
+  const a = parseArticle(text, registry);
   if (!a) { showError("That doesn't look like an http(s) link."); return; }
   showError("");
+  show(a, false);
+}
+
+function show(a, fromSource) {
   article = a;
   $("headline").value = a.headline;
   $("outlet").value = a.outlet;
   $("date").value = a.date;
+  $("notice").hidden = fromSource;
   $("result").hidden = false;
   update();
+}
+
+async function onSource() {
+  const html = $("source").value.trim();
+  if (!html) return;
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  const snap = await collectSnapshot(doc, $("url").value.trim(), { icon: false });
+  const a = parseArticle(snap, registry);
+  if (!a || !a.link) { showError("Could not find the article's address in that source. Paste the link above too."); return; }
+  showError("");
+  show(a, true);
 }
 
 function flash(btn, text) {
@@ -50,6 +67,7 @@ function flash(btn, text) {
 const cardBlob = () => new Promise((res) => $("card").toBlob(res, "image/png"));
 
 $("url").addEventListener("input", () => { clearTimeout(timer); onLink(); });
+$("source").addEventListener("input", onSource);
 for (const id of ["headline", "outlet", "date"]) $(id).addEventListener("input", updateSoon);
 $("suppress").addEventListener("change", update);
 

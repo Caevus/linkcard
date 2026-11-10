@@ -27,6 +27,12 @@
   <input id="url" type="url" placeholder="https://apnews.com/article/..." autofocus>
   <p id="error" role="alert" hidden></p>
 
+  <details id="paste">
+    <summary>Or paste the article's page source</summary>
+    <label for="source">Page source (view-source, select all, copy)</label>
+    <textarea id="source" placeholder="&lt;!doctype html&gt;..."></textarea>
+  </details>
+
   <section id="result" hidden>
     <p id="notice">Linkcard didn't read the article. The details below are guessed from the link, so check them.</p>
 
