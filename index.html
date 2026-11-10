@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linkcard</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; padding: 16px; line-height: 1.4; }
+  main { max-width: 720px; margin: 0 auto; }
+  input, textarea, button { font: inherit; padding: 8px; box-sizing: border-box; }
+  input[type=url], input[type=text], textarea { width: 100%; }
+  label { display: block; font-size: .85rem; margin: 10px 0 2px; }
+  canvas { width: 100%; height: auto; border: 1px solid #ccc; display: block; }
+  textarea { min-height: 96px; font-family: ui-monospace, monospace; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 20px; }
+  #notice { background: #fff4d6; border: 1px solid #e0c36a; padding: 8px; margin: 12px 0; }
+  #error { color: #b00020; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Linkcard</h1>
+  <p>Paste an article link. Get a Card and a Discord message to go with it.</p>
+
+  <label for="url">Article link</label>
+  <input id="url" type="url" placeholder="https://apnews.com/article/..." autofocus>
+  <p id="error" role="alert" hidden></p>
+
+  <section id="result" hidden>
+    <p id="notice">Linkcard didn't read the article. The details below are guessed from the link, so check them.</p>
+
+    <details id="edit" open>
+      <summary>Edit details</summary>
+      <label for="headline">Headline</label><input id="headline" type="text">
+      <label for="outlet">Outlet</label><input id="outlet" type="text">
+      <label for="date">Date</label><input id="date" type="text" placeholder="November 9, 2026">
+    </details>
+
+    <h2>Card</h2>
+    <canvas id="card" width="1200" height="630"></canvas>
+    <div class="row">
+      <button id="copyImage" type="button">Copy image</button>
+      <button id="download" type="button">Download PNG</button>
+    </div>
+
+    <h2>Message</h2>
+    <textarea id="message" readonly></textarea>
+    <label><input id="suppress" type="checkbox" checked> Wrap link in &lt;&gt; so Discord doesn't add its own preview</label>
+    <div class="row"><button id="copyMessage" type="button">Copy message</button></div>
+  </section>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
