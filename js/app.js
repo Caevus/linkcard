@@ -5,6 +5,7 @@ import { renderCard } from "./card-renderer.js";
 import { buildMessage } from "./message.js";
 import { parseArticle } from "./parser.js";
 import { collectSnapshot } from "./collector.js";
+import { recallEdits, rememberEdits } from "./edit-memory.js";
 
 const $ = (id) => document.getElementById(id);
 let registry = null;
@@ -13,6 +14,18 @@ let article = null; // { headline, outlet, date, link, domain }
 function showError(text) {
   $("error").textContent = text || "";
   $("error").hidden = !text;
+}
+
+function fillFields({ headline, outlet, date }) {
+  $("headline").value = headline;
+  $("outlet").value = outlet;
+  $("date").value = date;
+}
+
+/** Called on typing in an edit field: remember right away, then re-render after a pause. */
+function onField() {
+  if (article) rememberEdits(article.link, { headline: $("headline").value, outlet: $("outlet").value, date: $("date").value });
+  updateSoon();
 }
 
 function update() {
@@ -26,7 +39,7 @@ function update() {
 }
 
 let timer;
-const updateSoon = () => { clearTimeout(timer); timer = setTimeout(update, 150); };
+const updateSoon = () => { clearTimeout(timer); timer = setTimeout(update, 250); };
 
 function onLink() {
   const text = $("url").value.trim();
@@ -39,9 +52,7 @@ function onLink() {
 
 function show(a, fromSource) {
   article = a;
-  $("headline").value = a.headline;
-  $("outlet").value = a.outlet;
-  $("date").value = a.date;
+  fillFields(recallEdits(a.link) || a);
   $("notice").hidden = fromSource;
   $("result").hidden = false;
   update();
@@ -68,7 +79,7 @@ const cardBlob = () => new Promise((res) => $("card").toBlob(res, "image/png"));
 
 $("url").addEventListener("input", () => { clearTimeout(timer); onLink(); });
 $("source").addEventListener("input", onSource);
-for (const id of ["headline", "outlet", "date"]) $(id).addEventListener("input", updateSoon);
+for (const id of ["headline", "outlet", "date"]) $(id).addEventListener("input", onField);
 $("suppress").addEventListener("change", update);
 
 $("download").addEventListener("click", async () => {
