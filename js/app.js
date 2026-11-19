@@ -13,6 +13,7 @@ const $ = (id) => document.getElementById(id);
 let registry = null;
 let snapshot = null; // the Snapshot behind the current Card, if any
 let article = null; // { headline, outlet, date, link, domain }
+let lastSource = null; // read source of the last show(); Edit details opens only when it changes
 
 function showError(text) {
   $("error").textContent = text || "";
@@ -42,12 +43,26 @@ function refreshOpenInTab() {
   const edits = { headline: $("headline").value, outlet: $("outlet").value, date: $("date").value };
   $("openInTab").href = `${own}#${FRAGMENT_KEY}${encodeSnapshot(snapshot)}&${EDITS_KEY}${encodeEdits(edits)}`;
   $("openInTab").hidden = false;
+  $("openDot").hidden = false;
 }
 
 /** A typed date that starts with a digit (machine form) is shown via prettyDate when it parses; letter-leading dates stay as typed. */
 function shownDate(typed) {
   return /^\d/.test(typed.trim()) ? prettyDate(typed) || typed : typed;
 }
+
+/** Standalone only: the Message box grows to fit all of its text, in every browser. Framed, the fixed 86px from the CSS applies. */
+function fitMessage() {
+  if (framed) return;
+  const box = $("message");
+  const y = window.scrollY; // the collapse below can shorten the page and clamp the scroll position
+  box.style.height = "0px"; // collapse first so scrollHeight measures the text, not the old height
+  const cs = getComputedStyle(box);
+  const border = parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
+  box.style.height = `${box.scrollHeight + border}px`; // box-sizing is border-box
+  window.scrollTo(window.scrollX, y);
+}
+window.addEventListener("resize", fitMessage); // wrapping changes with width
 
 let renderId = 0;
 /** Renders offscreen and blits only if still the latest call (last call wins). Resolves to the canvas it drew, or null with no article. */
@@ -60,6 +75,7 @@ async function update() {
   refreshOpenInTab();
   const shown = { ...article, date: shownDate(article.date) };
   $("message").value = buildMessage(shown, $("suppress").checked);
+  fitMessage();
   const spec = registry.specFor(article.outlet, article.domain);
   const id = ++renderId;
   const off = document.createElement("canvas");
@@ -77,9 +93,11 @@ async function update() {
 function clearResult() {
   article = null;
   snapshot = null;
+  lastSource = null;
   renderId++;
   clearTimeout(timer);
   $("result").hidden = true;
+  $("intro").hidden = false;
 }
 
 let timer;
@@ -92,16 +110,32 @@ function onLink() {
   const a = parseArticle(text, registry);
   if (!a) { clearResult(); showError("That doesn't look like an http(s) link."); return; }
   showError("");
-  show(a, false);
+  show(a, "guessed");
 }
 
-function show(a, fromSource, snap = null) {
+const debug = new URLSearchParams(location.search).has("debug");
+
+/** Status text and style per read source: "tab" (extension or bookmarklet Snapshot), "pasted" (page source), "guessed" (link only). */
+const STATUS = {
+  tab: { text: " (read from your tab)", cls: "status-read" },
+  pasted: { text: " (read from pasted source)", cls: "status-read" },
+  guessed: { text: ": guessed from the link, please check", cls: "status-guessed" },
+};
+
+function show(a, source, snap = null) {
   article = a;
   snapshot = snap;
-  $("saveSnapshot").hidden = !snap;
+  const showSnapshot = debug && snap;
+  $("saveSnapshot").hidden = !showSnapshot;
+  $("snapshotDot").hidden = !showSnapshot;
   fillFields(recallEdits(a.link) || a);
-  $("notice").hidden = fromSource;
+  const { text, cls } = STATUS[source];
+  $("readStatus").textContent = text;
+  $("readStatus").className = cls;
+  if (source !== lastSource) $("edit").open = source === "guessed"; // a user who closed it keeps it closed while typing
+  lastSource = source;
   $("result").hidden = false;
+  $("intro").hidden = true;
   update();
 }
 
@@ -116,13 +150,36 @@ async function onSource() {
   const a = parseArticle(snap, registry);
   if (!a || !a.link) { clearResult(); showError("Could not find the article's address in that source. Paste the link above too."); return; }
   showError("");
-  show(a, true, snap);
+  show(a, "pasted", snap);
 }
 
-function flash(btn, text) {
-  const old = btn.textContent;
+// Original labels, read from the markup once so a flash never gets stored as the "original".
+const LABELS = new Map([$("copyImage"), $("copyMessage")].map((b) => [b, b.textContent]));
+const restTimers = new Map(); // button -> pending revert to its original label
+const failedButtons = new Set(); // buttons showing a failure label until the next page button press
+
+function setLabel(btn, text) {
+  clearTimeout(restTimers.get(btn));
+  restTimers.delete(btn);
   btn.textContent = text;
-  setTimeout(() => (btn.textContent = old), 1200);
+}
+
+/** Success: "Copied" for 2 seconds, then the original label. */
+function flashCopied(btn) {
+  setLabel(btn, "Copied");
+  restTimers.set(btn, setTimeout(() => setLabel(btn, LABELS.get(btn)), 2000));
+}
+
+/** Failure: the advice stays until a page button is pressed (see clearFailures). */
+function flashFailure(btn, text) {
+  setLabel(btn, text);
+  failedButtons.add(btn);
+}
+
+/** Runs first in every page button press: reverts failure labels, then the press does its own work. */
+function clearFailures() {
+  for (const btn of failedButtons) setLabel(btn, LABELS.get(btn));
+  failedButtons.clear();
 }
 
 const blobOf = (canvas) => new Promise((res, rej) => canvas ? canvas.toBlob((b) => (b ? res(b) : rej(new Error("no image"))), "image/png") : rej(new Error("no card")));
@@ -133,6 +190,7 @@ for (const id of ["headline", "outlet", "date"]) $(id).addEventListener("input",
 $("suppress").addEventListener("change", update);
 
 $("download").addEventListener("click", async () => {
+  clearFailures();
   if (!article) return;
   const blob = await blobOf(await update());
   const a = document.createElement("a");
@@ -143,27 +201,30 @@ $("download").addEventListener("click", async () => {
 });
 
 $("copyImage").addEventListener("click", async () => {
+  clearFailures();
   if (!article) return;
   try {
     // write() must start inside the click (user activation), so hand it a Promise<Blob>
     await navigator.clipboard.write([new ClipboardItem({ "image/png": update().then(blobOf) })]);
-    flash($("copyImage"), "Copied");
+    flashCopied($("copyImage"));
   } catch {
-    flash($("copyImage"), "Use Download instead");
+    flashFailure($("copyImage"), "Use Download instead");
   }
 });
 
 $("copyMessage").addEventListener("click", async () => {
+  clearFailures();
   try {
     await navigator.clipboard.writeText($("message").value);
-    flash($("copyMessage"), "Copied");
+    flashCopied($("copyMessage"));
   } catch {
     $("message").select();
-    flash($("copyMessage"), "Select and copy");
+    flashFailure($("copyMessage"), "Select and copy");
   }
 });
 
 $("saveSnapshot").addEventListener("click", () => {
+  clearFailures();
   if (!snapshot) return;
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([JSON.stringify(snapshot, null, 2)], { type: "application/json" }));
@@ -187,7 +248,7 @@ function onFragment() {
   $("url").value = a.link;
   const edits = editsFromHash(location.hash);
   if (edits) rememberEdits(a.link, edits);
-  show(a, true, snap);
+  show(a, "tab", snap);
 }
 
 try {

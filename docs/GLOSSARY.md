@@ -1,6 +1,6 @@
 # LinkCard
 
-Turns a news article into a shareable image and a ready-to-paste Discord message, for articles whose sites block Discord's own link previews.
+Turns a news article into a shareable image and a ready-to-paste Message, for articles whose sites block social media link previews.
 
 ## Output
 
@@ -9,11 +9,15 @@ The 1200x630 image representing one article, styled after its Outlet.
 _Avoid_: Preview, link card, embed, thumbnail
 
 **Message**:
-The Discord-formatted text (headline, Outlet, date, link) posted alongside the Card.
-_Avoid_: Markdown, post
+The text (headline, Outlet, date, link) posted alongside the Card, written in one Format.
+_Avoid_: Markdown, post (a Format may be named Markdown; the Message itself is never called "the markdown")
+
+**Format**:
+The text conventions a Message follows, named for where it gets pasted, such as Discord or Reddit. Markdown is the catch-all Format for anywhere else.
+_Avoid_: Platform, style, mode
 
 **Embed**:
-Discord's own automatic link preview. Only used when talking about suppressing it.
+A site's own automatic link preview, such as Discord's. Only used when talking about suppressing it.
 _Avoid_: Using it to mean the Card
 
 ## Outlets

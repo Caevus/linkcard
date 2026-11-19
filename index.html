@@ -5,64 +5,126 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LinkCard</title>
 <style>
-  body { font-family: system-ui, sans-serif; margin: 0; padding: 16px; line-height: 1.4; }
-  main { max-width: 720px; margin: 0 auto; }
-  input, textarea, button { font: inherit; padding: 8px; box-sizing: border-box; }
-  input[type=url], input[type=text], textarea { width: 100%; }
-  label { display: block; font-size: .85rem; margin: 10px 0 2px; }
-  canvas { width: 100%; height: auto; border: 1px solid #ccc; display: block; }
-  textarea { min-height: 96px; font-family: ui-monospace, monospace; }
-  .row { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 20px; }
-  #notice { background: #fff4d6; border: 1px solid #e0c36a; padding: 8px; margin: 12px 0; }
-  #error { color: #b00020; }
-  .framed .intro, .framed #paste, .framed #bookmarklet-note, .framed #extension-note, .framed #url-field { display: none; }
-  body.framed { padding: 8px; }
+  @font-face { font-family: "Fraunces"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("fonts/fraunces.woff2") format("woff2"); } /* variable: wght + opsz */
+  @font-face { font-family: "Fraunces"; font-style: italic; font-weight: 100 900; font-display: swap; src: url("fonts/fraunces-italic.woff2") format("woff2"); }
+  @font-face { font-family: "Courier Prime"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/courier-prime.woff2") format("woff2"); }
+
+  :root {
+    --ground: #fbfbf9; --ink: #1a1a18; --ink-mid: #55554f; --accent: #2e4a6b; --accent-light: #5a80a8;
+    --card-border: #d2d2cb; --box-outline: #b9b9b1;
+    --serif: "Fraunces", Georgia, serif; --mono: "Courier Prime", "Courier New", monospace;
+    background: var(--ground);
+  }
+  body { margin: 0; padding: 16px; background: var(--ground); color: var(--ink); font: 400 16px/22px var(--serif); font-optical-sizing: auto; }
+  main { max-width: 760px; margin: 0 auto; }
+  p { margin: 0 0 12px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-light); }
   [hidden] { display: none !important; }
+
+  .wordmark { margin: 0 0 10px; font: 700 30px/34px var(--serif); font-variation-settings: "opsz" 144; letter-spacing: -0.01em; color: var(--ink); }
+  .label { margin: 0 0 2px; font: italic 500 22px/28px var(--serif); font-variation-settings: "opsz" 72; color: var(--ink); }
+
+  input, textarea { font: 400 16px/22px var(--serif); color: var(--ink); background: transparent; border: 1px solid var(--box-outline); border-radius: 0; box-sizing: border-box; width: 100%; margin: 0; padding: 4px 8px; }
+  input[type=url], input[type=text] { height: 32px; }
+  input:focus, textarea:focus { border-color: var(--accent); outline: 0; }
+  input[type=checkbox] { width: auto; margin: 0; accent-color: var(--accent); }
+  textarea { display: block; resize: none; }
+  #source { height: 96px; resize: vertical; }
+  label { display: block; margin: 10px 0 2px; font: 600 13px/18px var(--serif); color: var(--ink-mid); }
+  #error { margin: 6px 0 12px; color: var(--accent); font-weight: 600; }
+
+  .btn { appearance: none; margin: 0; cursor: pointer; height: 34px; padding: 0 16px; border: 0; border-radius: 0; background: var(--accent); color: var(--ground); font: 600 15px/34px var(--serif); }
+  .btn:hover { background: var(--accent-light); }
+  .link { appearance: none; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; font: 400 16px/22px var(--serif); color: var(--accent); text-decoration: none; }
+  .link:hover { color: var(--accent-light); }
+  .dot { color: var(--ink-mid); }
+
+  details > summary { font: 400 16px/24px var(--serif); color: var(--accent); cursor: pointer; list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::before { content: "\25B8\00a0"; }
+  details[open] > summary::before { content: "\25BE\00a0"; }
+  .status-read { color: var(--ink-mid); }
+  .status-guessed { color: var(--accent); font-weight: 600; }
+
+  body:not(.framed) #result { margin-top: 16px; } /* standalone only: keeps the popup budget unchanged */
+  #setup { margin-top: 16px; }
+  #setup .label { margin-top: 16px; }
+  #paste { margin: 0 0 12px; }
+
+  .card { border: 1px solid var(--card-border); }
+  .card canvas { display: block; width: 100%; height: auto; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; margin-top: 8px; }
+  .secondary { display: inline-flex; align-items: baseline; gap: 8px; }
+  .message { margin-top: 16px; }
+  .format { margin: 0 0 6px; }
+  .format-item { display: inline-block; color: var(--ink-mid); }
+  .format-item.selected { color: var(--ink); border-bottom: 2px solid var(--accent); }
+  #message { font: 400 14px/19px var(--mono); }
+  .copy { margin-top: 8px; }
+  label.wrap { display: flex; align-items: center; gap: 8px; margin: 6px 0 0; font: 400 16px/22px var(--serif); color: var(--ink); cursor: pointer; }
+  #edit { margin-top: 8px; }
+  .fields { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 8px 12px; margin: 8px 0; }
+  .fields label { margin: 0; }
+  .fields label span { display: block; }
+  @media (max-width: 600px) { .fields { grid-template-columns: 1fr; } }
+
+  .framed .intro, .framed #setup, .framed #url-field { display: none; }
+  body.framed { padding: 8px; }
+  /* Popup fit. --budget is everything on the framed page except the Card's canvas, with Edit details closed (all px line heights):
+     body padding 8+8 = 16; wordmark 34 + 10 margin = 44; Card border 1+1 = 2; actions 8 margin + 34 buttons = 42;
+     Message block 16 margin + 28 label + 2 margin + 24 format row + 6 margin + 86 box + 8 + 34 Copy message + 6 + 22 wrap = 232;
+     Edit details 8 margin + 24 summary = 32. Slack 4 (sub-pixel rounding differs by browser).  16+44+2+42+232+32+4 = 372. Card width = (100vh - budget) x 1200/630. */
+  .framed { --budget: 372px; }
+  .framed .card { width: min(100%, calc((100vh - var(--budget)) * 1200 / 630)); }
+  .framed #message { height: 86px; overflow-y: auto; }
 </style>
 </head>
 <body>
 <main>
-  <h1 class="intro">LinkCard</h1>
-  <p class="intro">Paste an article link. Get a Card and a Discord message to go with it.</p>
+  <h1 class="wordmark">LinkCard</h1>
+  <p id="intro" class="intro">Turn a news article into an image and message for social media, for sites that block link previews.</p>
 
   <div id="url-field"><label for="url">Article link</label>
   <input id="url" type="url" placeholder="https://apnews.com/article/..." autofocus></div>
   <p id="error" role="alert" hidden></p>
 
-  <p id="bookmarklet-note">Bookmarklet: drag <a id="bookmarklet" href="#">LinkCard</a> to your bookmarks bar, then click it on an article.</p>
-
-  <p id="extension-note">Firefox: <!-- Placeholder URL. Replace with the live listing once it is published on AMO. --><a href="https://addons.mozilla.org/firefox/addon/linkcard/" target="_blank" rel="noopener">Add to Firefox</a></p>
-
-  <details id="paste">
-    <summary>Or paste the article's page source</summary>
-    <label for="source">Page source (view-source, select all, copy)</label>
-    <textarea id="source" placeholder="&lt;!doctype html&gt;..."></textarea>
-  </details>
-
   <section id="result" hidden>
-    <p><a id="openInTab" href="#" target="_blank" rel="noopener" hidden>Open in tab</a></p>
-    <p id="notice">LinkCard didn't read the article. The details below are guessed from the link, so check them.</p>
-
-    <details id="edit" open>
-      <summary>Edit details</summary>
-      <label for="headline">Headline</label><input id="headline" type="text">
-      <label for="outlet">Outlet</label><input id="outlet" type="text">
-      <label for="date">Date</label><input id="date" type="text" placeholder="November 9, 2026">
-    </details>
-
-    <h2>Card</h2>
-    <canvas id="card" width="1200" height="630"></canvas>
-    <div class="row">
-      <button id="copyImage" type="button">Copy image</button>
-      <button id="download" type="button">Download PNG</button>
-      <button id="saveSnapshot" type="button" hidden>Save Snapshot</button>
+    <div class="card"><canvas id="card" width="1200" height="630"></canvas></div>
+    <div class="actions">
+      <button id="copyImage" type="button" class="btn">Copy image</button>
+      <span class="secondary"><button id="download" type="button" class="link">Download PNG</button><span id="openDot" class="dot" hidden>&middot;</span><a id="openInTab" href="#" target="_blank" rel="noopener" hidden>Open in tab</a><span id="snapshotDot" class="dot" hidden>&middot;</span><button id="saveSnapshot" type="button" class="link" hidden>Save Snapshot</button></span>
     </div>
 
-    <h2>Message</h2>
-    <textarea id="message" readonly></textarea>
-    <label><input id="suppress" type="checkbox" checked> Wrap link in &lt;&gt; so Discord doesn't add its own preview</label>
-    <div class="row"><button id="copyMessage" type="button">Copy message</button></div>
+    <div class="message">
+      <h2 class="label">Message</h2>
+      <div class="format"><span class="format-item selected">Discord</span></div>
+      <textarea id="message" rows="4" readonly></textarea>
+      <div class="copy"><button id="copyMessage" type="button" class="btn">Copy message</button></div>
+      <label class="wrap"><input id="suppress" type="checkbox" checked> Wrap link in &lt;&gt; (stops Discord adding its own preview)</label>
+    </div>
+
+    <details id="edit" open>
+      <summary>Edit details<span id="readStatus"></span></summary>
+      <div class="fields">
+        <label><span>Headline</span><input id="headline" type="text"></label>
+        <label><span>Outlet</span><input id="outlet" type="text"></label>
+        <label><span>Date</span><input id="date" type="text" placeholder="November 9, 2026"></label>
+      </div>
+    </details>
   </section>
+
+  <div id="setup">
+    <p id="extension-note">Get the extension: <a href="https://github.com/Caevus/linkcard#extension" target="_blank" rel="noopener">Firefox</a> <span class="dot">&middot;</span> <a href="https://github.com/Caevus/linkcard#extension" target="_blank" rel="noopener">Chrome</a></p>
+
+    <h2 class="label">Other ways</h2>
+    <p id="bookmarklet-note">Bookmarklet: drag <a id="bookmarklet" href="#">LinkCard</a> to your bookmarks bar, then click it on an article.</p>
+    <details id="paste">
+      <summary>Paste the page source</summary>
+      <label for="source">Page source (view-source, select all, copy)</label>
+      <textarea id="source" placeholder="&lt;!doctype html&gt;..."></textarea>
+    </details>
+  </div>
 </main>
 <script type="module" src="js/app.js"></script>
 </body>
