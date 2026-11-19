@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "LinkCard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate a social media ready preview card and message for the article you are reading.",
   "permissions": ["activeTab", "scripting"],
   "action": {
