@@ -23,5 +23,8 @@ jobs:
       - name: Extension sync check
         run: node scripts/sync-extension.mjs --check
 
+      - name: Extension lint
+        run: npx --yes web-ext lint --source-dir extension
+
       - name: Tests
         run: node --test

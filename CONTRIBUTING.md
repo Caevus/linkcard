@@ -11,10 +11,14 @@ LinkCard is a set of static files.
 1. Serve the repo root with any static server, for example:
 
    ```sh
-   python -m http.server 8000
+   python -m http.server 8000 --bind 127.0.0.1
    ```
 
+   Binding to 127.0.0.1 keeps the server local and avoids a firewall prompt.
+
 2. Open http://localhost:8000/.
+3. To see the page in each state, open http://localhost:8000/dev/states.html. It links every test fixture as a read-from-tab result, gives each article link to paste for the guessed state, and shows the page in an 800x600 frame like the extension popup.
+4. After editing, hard reload (Ctrl+Shift+R). This server sends no cache headers, so browsers keep serving old copies of the scripts.
 
 ### Point the extension at your local server
 
@@ -85,7 +89,7 @@ LinkCard shows a logo only when `logo:` names it. LinkCard fits the logo into a 
 
 ## Releasing the extension
 
-The Firefox extension is a listed add-on on addons.mozilla.org (AMO). To release a new version:
+The Firefox extension is a listed add-on on addons.mozilla.org (AMO). Releases are done by the maintainer only: the signing script and the AMO credentials are not in the repository. To release a new version:
 
 1. Bump `version` in `extension/manifest.json`.
 2. Run `npx web-ext lint --source-dir extension` and fix any errors or warnings.

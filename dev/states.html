@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LinkCard states (dev)</title>
+<style>
+  body { margin: 0; padding: 16px; font: 15px/22px system-ui, sans-serif; color: #1a1a18; background: #fff; }
+  h1 { font-size: 22px; margin: 12px 0 8px; }
+  h2 { font-size: 18px; margin: 28px 0 8px; padding-bottom: 4px; border-bottom: 1px solid #ccc; }
+  .dev { margin: 0; padding: 4px 8px; background: #ffe9a8; }
+  ul { padding-left: 20px; }
+  li { margin: 0 0 18px; }
+  p { margin: 4px 0; }
+  .muted { color: #555; font-size: 13px; }
+  code, input.link { font: 13px/18px Consolas, "Courier New", monospace; }
+  input.link { display: block; width: 100%; max-width: 760px; box-sizing: border-box; margin: 4px 0; padding: 4px 6px; }
+  select { font: inherit; }
+  .frame-wrap { overflow-x: auto; }
+  iframe { display: block; width: 800px; height: 600px; border: 0; }
+</style>
+</head>
+<body>
+<p class="dev"><strong>Dev page only.</strong> Not part of the shipped LinkCard. Serve the repo root with <code>python -m http.server</code> and open <code>/dev/states.html</code>.</p>
+
+<h1>LinkCard states</h1>
+<p><a href="../index.html">Pre-result state (empty link input)</a></p>
+
+<h2>Fixtures</h2>
+<ul id="fixtures"></ul>
+
+<h2>800 &times; 600 popup frame</h2>
+<p><label>Fixture <select id="pick"></select></label></p>
+<div class="frame-wrap" id="frame"></div>
+
+<script type="module">
+import { FRAGMENT_KEY, encodeSnapshot } from "../js/fragment.js";
+
+// Hard-coded list: add a name here when a new test/fixtures/<name>.snapshot.json is saved.
+const FIXTURES = ["ap-news", "bloomberg", "nyt", "utah-news-dispatch", "v1-ap-news"];
+
+const list = document.getElementById("fixtures");
+const pick = document.getElementById("pick");
+const frame = document.getElementById("frame");
+
+async function readFixture(name) {
+  const snapshot = await (await fetch(`../test/fixtures/${name}.snapshot.json`)).json();
+  let link = snapshot.canonical || snapshot.url || "";
+  try {
+    const expected = await (await fetch(`../test/fixtures/${name}.expected.json`)).json();
+    if (expected.link) link = expected.link;
+  } catch { /* keep the Snapshot's own address */ }
+  return { name, snapshot, link };
+}
+
+// Read-from-tab URL: the same fragment the extension and bookmarklet produce.
+const tabUrl = (snapshot, debug) => `../index.html${debug ? "?debug" : ""}#${FRAGMENT_KEY}${encodeSnapshot(snapshot)}`;
+
+function anchor(text, href) {
+  const a = document.createElement("a");
+  a.textContent = text;
+  a.href = href;
+  return a;
+}
+
+function row({ name, snapshot, link }) {
+  const li = document.createElement("li");
+  const title = document.createElement("strong");
+  title.textContent = name;
+  li.append(title);
+
+  const links = document.createElement("p");
+  links.append(anchor("Read from tab", tabUrl(snapshot, false)), " · ", anchor("Read from tab, ?debug", tabUrl(snapshot, true)));
+  li.append(links);
+
+  const input = document.createElement("input");
+  input.className = "link";
+  input.readOnly = true;
+  input.value = link;
+  input.addEventListener("focus", () => input.select());
+  li.append(input);
+
+  const note = document.createElement("p");
+  note.className = "muted";
+  note.textContent = "Article link: paste into the link input for the guessed state.";
+  li.append(note);
+  return li;
+}
+
+function showFrame(entry) {
+  const iframe = document.createElement("iframe");
+  iframe.title = `LinkCard popup frame: ${entry.name}`;
+  iframe.src = tabUrl(entry.snapshot, false);
+  frame.replaceChildren(iframe); // a new element each time: changing only the hash would not reload the page
+}
+
+try {
+  const loaded = await Promise.all(FIXTURES.map(readFixture));
+  const byName = new Map(loaded.map((f) => [f.name, f]));
+  for (const f of loaded) {
+    list.append(row(f));
+    pick.append(new Option(f.name, f.name));
+  }
+  pick.addEventListener("change", () => showFrame(byName.get(pick.value)));
+  showFrame(loaded[0]);
+} catch (e) {
+  const p = document.createElement("p");
+  p.textContent = `Could not load fixtures (${e.message}). Serve the repo root over http, not file://.`;
+  list.replaceWith(p);
+}
+</script>
+</body>
+</html>
